@@ -1,0 +1,21 @@
+|2020-03-22_00-00-56|info| server established. port:7736
+|2020-03-22_00-00-56|info| add handler 1001
+|2020-03-22_00-01-00|debug| new client. fd = <socket._socketobject object at 0x02DB1F10>port = 61445
+|2020-03-22_00-01-00|info| recv msg[6][1001][hello!]
+|2020-03-22_00-02-01|info| server established. port:7736
+|2020-03-22_00-02-01|info| add handler 1001
+|2020-03-22_00-02-32|info| server established. port:7736
+|2020-03-22_00-02-39|info| server established. port:7736
+|2020-03-22_00-02-39|info| add handler 1001
+|2020-03-22_00-03-07|info| server established. port:7736
+|2020-03-22_00-03-07|info| add handler 1001
+|2020-03-22_00-11-15|info| server established. port:7736
+|2020-03-22_00-11-15|info| add handler 1001
+|2020-03-22_00-11-18|debug| new client. fd = <socket._socketobject object at 0x035A2F10>port = 61731
+|2020-03-22_00-11-18|info| recv msg[6][1001][hello!]
+|2020-03-22_00-11-18|info| test
+|2020-03-22_00-12-14|info| server established. port:7736
+|2020-03-22_00-12-14|info| add handler 1001
+|2020-03-22_00-12-18|debug| new client. fd = <socket._socketobject object at 0x036D1ED8>port = 61744
+|2020-03-22_00-12-18|info| recv msg[6][1001][hello!]
+|2020-03-22_00-12-18|info| test
