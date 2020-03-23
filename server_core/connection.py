@@ -7,9 +7,8 @@ from server_core.message import Message
 
 
 class Connection:
-
     err_d = (errno.EINPROGRESS, errno.EALREADY, errno.EWOULDBLOCK)
-    err_conn = (errno.EISCONN, 10057, 10035) # client 10053
+    err_conn = (errno.EISCONN, 10057, 10035)  # client 10053
 
     def __init__(self, workers):
         self.client_fd = None

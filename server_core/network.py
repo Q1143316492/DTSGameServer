@@ -15,9 +15,10 @@ class NetworkServerBase:
 
     def _close_fd(self):
         try:
+            self.server_fd.shutdown(socket.SHUT_RDWR)
             self.server_fd.close()
-        except Exception as e:
-            self.logger.error("net socket close fail err:" + e.message)
+        except IOError as e:
+            self.logger.error("net socket close fail err: " + str(e.errno) + " " + e.strerror)
 
     def _network_start(self):
         self.server_fd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -25,9 +26,9 @@ class NetworkServerBase:
 
         try:
             self.server_fd.bind((self.host, self.port))
-        except Exception as e:
+        except IOError as e:
             self._close_fd()
-            self.logger.error("server bind fail. msg:" + e.message)
+            self.logger.error("server bind fail. msg: " + str(e.errno) + " " + e.strerror)
             return
 
         self.server_fd.listen(config.MAX_LISTEN_QUEUE_SIZE)

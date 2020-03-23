@@ -64,12 +64,14 @@ class ConnectionPool:
     def send_handler(self, conn_id, msg):
         if self.mode == config.SERVER_MODE_EASY:
             self._send_event(conn_id, msg)
-        elif self.mode == config.SERVER_MODE_SELECT:
+        elif self.mode == config.SERVER_MODE_SELECT or self.mode == config.SERVER_MODE_EPOLL:
             if conn_id not in self.send_queue.keys():
                 self.send_queue[conn_id] = Queue.Queue()
                 self.send_queue[conn_id].put(msg)
             else:
                 self.send_queue[conn_id].put(msg)
+        else:
+            self.logger.warn("server mode not found")
 
     # 触发发送事件，返回发送消息是否发完
     def trigger_send_event(self, conn_id):

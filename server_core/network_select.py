@@ -66,9 +66,6 @@ class Select(NetworkServerBase):
 
     def __update_writable(self):
         for s in self.writable:
-            if s not in self.socket_to_conn_id_dict.keys():
-                self.outputs.remove(s)
-                continue
             conn_id = self.socket_to_conn_id_dict[s]
             is_empty = self.conn_pool.trigger_send_event(conn_id)
             if is_empty:

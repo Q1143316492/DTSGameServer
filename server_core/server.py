@@ -6,6 +6,7 @@ from server_core.config import *
 from server_core.worker_pool import WorkerPool
 from server_core.network_nio import LightServer
 from server_core.network_select import Select
+from server_core.network_epoll import Epoll
 
 
 class Server:
@@ -29,16 +30,15 @@ class Server:
             self.logger.error("work process not init." + e.message)
 
     def start(self, port=7736):
-        # todo
-        # if hasattr(select, 'epoll'):
-        #     pass
-        #    return
-
-        if hasattr(select, 'select'):
+        if hasattr(select, 'epoll'):
+            self.network_server = Epoll(port)
+            self.logger.info("network mode epoll")
+        elif hasattr(select, 'select'):
             self.network_server = Select(port)
             self.logger.info("network mode select")
         else:
             self.network_server = LightServer(port)
+            self.logger.info("network mode light server")
 
         self.work_process = WorkerPool()
 
