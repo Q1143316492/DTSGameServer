@@ -24,9 +24,10 @@ class Connection:
         try:
             self.logger.debug(
                 "client exit. fd = " + str(self.client_fd) + "port = " + str(self.client_fd.getpeername()[1]))
+            self.client_fd.shutdown(socket.SHUT_RDWR)
             self.client_fd.close()
-        except Exception as e:
-            self.logger.error("conn socket close fail err:" + e.message)
+        except IOError as err:
+            self.logger.error("conn socket close fail err:" + str(err.errno))
 
     def assign(self, fd, conn_id):
         self.client_fd = fd

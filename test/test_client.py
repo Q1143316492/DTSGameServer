@@ -3,7 +3,8 @@ import socket
 import errno
 
 fd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-fd.connect(("localhost", 7736))
+fd.connect(("117.78.5.122", 7736))
+# fd.connect(("127.0.0.1", 7736))
 fd.setblocking(False)
 
 
@@ -16,6 +17,9 @@ msg.pack_buffer(1001, 'hello!')
 fd.sendall(msg.get_stream())
 
 msg.assign()
+
+ok = False
+
 while True:
     text = ''
     try:
@@ -38,5 +42,9 @@ while True:
         if msg.finish():
             print msg.__str__()
             msg.assign()
+            ok = True
+
+    if ok:
+        break
 
 fd.close()

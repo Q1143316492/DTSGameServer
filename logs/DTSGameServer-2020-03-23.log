@@ -118,3 +118,17 @@
 |2020-03-23_16-52-15|info| recv msg[6][1001][hello!]
 |2020-03-23_16-52-15|info| login:test
 |2020-03-23_16-52-20|debug| client exit. fd = <socket._socketobject object at 0x033461F0>port = 62232
+|2020-03-23_17-24-32|info| network mode select
+|2020-03-23_17-24-32|info| server established. port:7736
+|2020-03-23_17-24-32|info| add handler 1001
+|2020-03-23_17-24-35|debug| new client. fd = <socket._socketobject object at 0x032A71B8>port = 63652
+|2020-03-23_17-24-35|info| recv msg[6][1001][hello!]
+|2020-03-23_17-24-35|info| login:test
+|2020-03-23_17-24-36|debug| client exit. fd = <socket._socketobject object at 0x032A71B8>port = 63652
+|2020-03-23_17-39-09|info| network mode select
+|2020-03-23_17-39-09|info| server established. port:7736
+|2020-03-23_17-39-09|info| add handler 1001
+|2020-03-23_17-39-12|debug| new client. fd = <socket._socketobject object at 0x02BA71B8>port = 64151
+|2020-03-23_17-39-12|info| recv msg[6][1001][hello!]
+|2020-03-23_17-39-12|info| login:test
+|2020-03-23_17-39-16|debug| client exit. fd = <socket._socketobject object at 0x02BA71B8>port = 64151
