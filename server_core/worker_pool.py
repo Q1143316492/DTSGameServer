@@ -2,6 +2,7 @@
 from server_core.log import Log
 from server_core.net_request import Request
 from server_core.net_response import Response
+from server_core.function_handler import FunctionHandler
 import multiprocessing
 import Queue
 import random
@@ -13,7 +14,7 @@ def worker_function(request_queue, response_queue, handler_dict):
         res = Response(req.conn_id)
         handler = req.get_handler()
         if handler in handler_dict.keys():  # 根据 request 哈希到具体函数
-            handler_dict[handler](req, res)
+            handler_dict[handler].run(req, res)
             response_queue.put(res)         # 如果满了会阻塞，尽量避免阻塞, response 尽快消费
 
 
@@ -49,7 +50,7 @@ class WorkerPool:
         pass
 
     def add_handler(self, handler, controller):
-        if isinstance(handler, int) and callable(controller):
+        if isinstance(handler, int) and isinstance(controller, FunctionHandler):
             self.handler_dict[handler] = controller
 
     def del_handler(self, handler):
@@ -60,7 +61,7 @@ class WorkerPool:
     # 需要路由到具体逻辑代码
     # 最后调用 self.conn_pool.send_event(conn_id, res)， res 会在合适的时候发给客户端
     def message_handler(self, conn_id, msg):
-        worker_id = random.randint(0, self.process_count)
+        worker_id = random.randint(0, self.process_count - 1)
         try:
             self.request_queues[worker_id].put_nowait(Request(conn_id, msg))
         except Queue.Full:

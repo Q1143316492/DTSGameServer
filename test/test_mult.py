@@ -5,20 +5,20 @@ import random
 import time
 
 
-def first_progress():
-    while True:
-        pass
-        # print os.getpid()
-        # print "asd"
+class FunctionHandler:
 
+    def __init__(self):
+        self.pre_handler = None
+        self.handler = None
+        self.last_handler = None
+
+    def call(self):
+        if not self.pre_handler():
+            self.pre_handler()
+
+
+def handler():
+    print "handler"
 
 if __name__ == '__main__':
-
-    p1 = multiprocessing.Process(target=first_progress)
-    p2 = multiprocessing.Process(target=first_progress)
-
-    p1.start()
-    p2.start()
-
-    print time.time()
-
+    pass

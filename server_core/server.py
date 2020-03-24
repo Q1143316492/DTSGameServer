@@ -22,10 +22,10 @@ class Server:
         self.work_process = None
         self.logger = Log()
 
-    def add_handler(self, handler, controller):
+    def add_handler(self, handler_func):
         try:
-            self.work_process.add_handler(handler, controller)
-            self.logger.info("add handler " + str(handler))
+            self.work_process.add_handler(handler_func.handler_id, handler_func)
+            self.logger.info("add handler " + str(handler_func.handler_id))
         except Exception as e:
             self.logger.error("work process not init." + e.message)
 
