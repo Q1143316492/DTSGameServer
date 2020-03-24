@@ -3,8 +3,8 @@ import socket
 import errno
 
 fd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-fd.connect(("117.78.5.122", 7736))
-# fd.connect(("127.0.0.1", 7736))
+# fd.connect(("117.78.5.122", 7736))
+fd.connect(("127.0.0.1", 7736))
 fd.setblocking(False)
 
 

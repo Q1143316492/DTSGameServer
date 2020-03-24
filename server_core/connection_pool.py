@@ -50,10 +50,15 @@ class ConnectionPool:
             del self.connections[conn_id]
 
     # 返回是否有连接退出
-    def recv_event(self, conn_id):
+    def recv_event(self, conn_id, use_et=False):
         if conn_id in self.connections.keys():
             conn = self.connections[conn_id]
-            is_exit = conn.recv_event()
+            # epoll et
+            if use_et:
+                is_exit = conn.recv_event_epoll_et()
+            # epoll lt or others
+            else:
+                is_exit = conn.recv_event()
             if is_exit:
                 self.__del_conn(conn.client_fd)
                 return True

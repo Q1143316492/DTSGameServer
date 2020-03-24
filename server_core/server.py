@@ -29,16 +29,40 @@ class Server:
         except Exception as e:
             self.logger.error("work process not init." + e.message)
 
-    def start(self, port=7736):
-        if hasattr(select, 'epoll'):
+    # 预选择服务器IO模式
+    def pre_bind_io_mode(self, port, mode):
+        if not isinstance(mode, str):
+            return False
+        if mode.__eq__("epoll") and hasattr(select, 'epoll'):
             self.network_server = Epoll(port)
             self.logger.info("network mode epoll")
-        elif hasattr(select, 'select'):
+            return True
+        if mode.__eq__("epoll_et") and hasattr(select, 'epoll'):
+            self.network_server = Epoll(port, use_et=True)
+            self.logger.info("network mode epoll et")
+            return True
+        if mode.__eq__("select") and hasattr(select, 'select'):
             self.network_server = Select(port)
             self.logger.info("network mode select")
-        else:
+            return True
+        if mode.__eq__("light"):
             self.network_server = LightServer(port)
             self.logger.info("network mode light server")
+            return True
+        return False
+
+    def start(self, port=7736, mode=None):
+
+        if not self.pre_bind_io_mode(port, mode):
+            if hasattr(select, 'epoll'):
+                self.network_server = Epoll(port)
+                self.logger.info("network mode epoll lt")
+            elif hasattr(select, 'select'):
+                self.network_server = Select(port)
+                self.logger.info("network mode select")
+            else:
+                self.network_server = LightServer(port)
+                self.logger.info("network mode light server")
 
         self.work_process = WorkerPool()
 
@@ -52,7 +76,8 @@ class Server:
             self.logger.error("server instance is None")
             return
         if self.network_server.state == SERVER_ESTABLISHED:
+            self.work_process.start()
             self.network_server.run()
 
     def stop(self):
-        pass
+        self.work_process.stop()

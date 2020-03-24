@@ -35,7 +35,7 @@ class Select(NetworkServerBase):
         client_fd = None
         try:
             client_fd, remote = self.server_fd.accept()
-        except Exception as e:
+        except socket.error as e:
             pass
         if not client_fd:
             return
@@ -89,3 +89,4 @@ class Select(NetworkServerBase):
             self.__update_readable()
             self.__update_writable()
             self.__update_exceptional()
+            self.workers.message_consumer()

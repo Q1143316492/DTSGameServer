@@ -15,6 +15,8 @@ if __name__ == '__main__':
     pass
     server = Server("cwl server", "01")
 
-    server.start()
+    # server.start(mode="light")
+    server.start(mode="select")
+
     server.add_handler(1001, login)
     server.run()

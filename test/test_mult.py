@@ -1,17 +1,24 @@
 # coding=utf-8
 import multiprocessing.pool
 import os
+import random
+import time
 
 
-def test_thread1():
-    def func1(name):
+def first_progress():
+    while True:
         pass
-
-
-def f(x):
-    return x * x
+        # print os.getpid()
+        # print "asd"
 
 
 if __name__ == '__main__':
-    a  = {1 : "2"}
-    del a[3]
+
+    p1 = multiprocessing.Process(target=first_progress)
+    p2 = multiprocessing.Process(target=first_progress)
+
+    p1.start()
+    p2.start()
+
+    print time.time()
+
