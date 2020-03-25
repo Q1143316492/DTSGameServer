@@ -22,7 +22,7 @@ if __name__ == '__main__':
     server = Server("cwl server", "01")
 
     # server.start(mode="light")
-    server.start(mode="select")
+    server.start(mode="light")
 
     func = FunctionHandler(1001, login)
     func.pre_handler = pre_login

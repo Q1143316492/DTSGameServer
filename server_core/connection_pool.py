@@ -10,13 +10,13 @@ import uuid
 class ConnectionPool:
 
     def __init__(self):
-        self.connections = {} # conn_id : connection
+        self.connections = {}  # conn_id : connection
         self.auto_id = 0
         self.logger = Log()
         self.workers = None
         self.mode = None
         self.auto_increase = 0
-        self.send_queue = {} # conn_id : Queue { msg1, msg2, ... }
+        self.send_queue = {}  # conn_id : Queue { msg1, msg2, ... }
 
     def init(self, workers, mode):
         self.workers = workers
@@ -29,6 +29,7 @@ class ConnectionPool:
         conn.assign(client_fd, conn_id)
         if len(self.connections) < config.NET_CONNECTION_POOL_SIZE:
             self.connections[conn_id] = conn
+            self.logger.debug("connection count = " + str(len(self.connections)))
             return conn_id
         else:
             return None
@@ -43,7 +44,7 @@ class ConnectionPool:
             self.__del_conn(conn_id)
 
     def __del_conn(self, conn_id):
-        # 可写的时候，和IO复用异常的时候，都会出现关闭连接，可能会出现重复关闭？
+        # 可写的时候，和IO复用异常的时候，都会出现关闭连接，可能会出现重复关闭
         if conn_id in self.send_queue.keys():
             del self.send_queue[conn_id]
         if conn_id in self.connections.keys():
