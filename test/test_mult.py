@@ -1,7 +1,9 @@
 # coding=utf-8
+import binascii
 import multiprocessing.pool
 import os
 import random
+import struct
 import time
 
 
@@ -17,8 +19,7 @@ class FunctionHandler:
             self.pre_handler()
 
 
-def handler():
-    print "handler"
-
 if __name__ == '__main__':
-    pass
+    print "%.2f %.2f" % (3.1415926, 66666666.66666666)
+    # val = struct.pack(">i", 0x0102)
+    # print binascii.hexlify(val)

@@ -1,6 +1,6 @@
 # coding=utf-8
 import struct
-
+from server_core import config
 
 class Message:
     """
@@ -98,6 +98,10 @@ class Message:
             if self.__now_size == self.__header_size:
                 self.__state = Message.PKG_RECV_HANDLER
                 self.__header_val = struct.unpack(">i", self.__buf)[0]
+                # todo 消息长度不合法重置消息, 这里或许应该杀死客户端
+                if self.__header_val <= 0 or self.__header_val > config.MAX_MESSAGE_SIZE:
+                    self.assign()
+
                 self.__reset_buf()
         elif self.__state == Message.PKG_RECV_HANDLER:
             read_size = self.__recv(buf, buffer_size, self.__handler_size - self.__now_size)

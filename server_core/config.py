@@ -23,6 +23,7 @@ SERVER_MODE_EPOLL = 2
 # net
 MAX_LISTEN_QUEUE_SIZE = 65536
 
+MAX_MESSAGE_SIZE = 1024
 # NET_STATE_STOP = 0  # state: init value
 # NET_STATE_CONNECTING = 1  # state: connecting
 # NET_STATE_ESTABLISHED = 2  # state: connected

@@ -8,7 +8,7 @@ server = None
 
 def pre_login(req, res):
     print "pre_log" + req.msg.__str__()
-    req.msg.pack_buffer(1002, "world!")
+    req.msg.pack_buffer(1001, "world!")
 
 
 def login(req, res):
