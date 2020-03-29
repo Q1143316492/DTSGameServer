@@ -13,7 +13,7 @@ err_d = (errno.EINPROGRESS, errno.EALREADY, errno.EWOULDBLOCK)
 recv_buf = ''
 
 msg = Message()
-msg.pack_buffer(1001, 'hello!')
+msg.pack_buffer(1001, '{"name":"cwl", "passwd" : 123456}')
 fd.sendall(msg.get_stream())
 
 msg.assign()

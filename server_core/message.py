@@ -2,6 +2,7 @@
 import struct
 from server_core import config
 
+
 class Message:
     """
         消息格式   【4字节消息头，4字节消息句柄，n字节消息内容】
