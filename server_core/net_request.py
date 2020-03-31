@@ -41,3 +41,7 @@ class Request:
             self.logger.debug("json parse err. " + str(err))
             return
         self.parse_success = True
+
+# json 备注
+# str = json.dumps(obj)
+# obj = json.loads(str) ValueError

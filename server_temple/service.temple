@@ -5,22 +5,22 @@ from server_core import config
 import json
 
 
-class UserRegisterService:
+class {1}:
 
     def __init__(self):
-        if not hasattr(config, "USER_REGISTER_SERVICE"):
+        if not hasattr(config, "{2}"):
             raise Exception("config file service id not define")
-        self.handler_id = config.USER_REGISTER_SERVICE
-        self.func_handler = FunctionHandler(self.handler_id, UserRegisterService.user_register_service_run)
-        self.func_handler.pre_handler = UserRegisterService.user_register_service_pretreatment
-        self.func_handler.last_handler = UserRegisterService.user_register_service_aftertreatment
+        self.handler_id = config.{2}
+        self.func_handler = FunctionHandler(self.handler_id, {1}.{0}_run)
+        self.func_handler.pre_handler = {1}.{0}_pretreatment
+        self.func_handler.last_handler = {1}.{0}_aftertreatment
 
     @staticmethod
-    def user_register_service_pretreatment(req, res):
+    def {0}_pretreatment(req, res):
         req.deserialization()
 
     @staticmethod
-    def user_register_service_run(req, res):
+    def {0}_run(req, res):
         if not req.parse_success or not req.content:
             Log().warn("service %d req parse err" % config.USER_LOGIN_SERVICE)
             return
@@ -34,16 +34,16 @@ class UserRegisterService:
         # 处理业务
 
         # 设置返回 dict
-        res.content = {
+        res.content = {{
             "ret": 0
-        }
+        }}
 
     @staticmethod
-    def user_register_service_aftertreatment(req, res):
+    def {0}_aftertreatment(req, res):
         try:
             req.msg.pack_buffer(req.msg.get_handler(), json.dumps(res.content))
         except Exception as e:
-            Log().warn("user_register_service_aftertreatment err. " + str(e) + "req " + str(req.msg))
+            Log().warn("{0}_aftertreatment err. " + str(e) + "req " + str(req.msg))
 
         if not res.msg.finish():
             res.msg.pack_buffer(0, "err")

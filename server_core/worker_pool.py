@@ -14,7 +14,13 @@ def worker_function(request_queue, response_queue, handler_dict):
         res = Response(req.conn_id)
         handler = req.get_handler()
         if handler in handler_dict.keys():  # 根据 request 哈希到具体函数
-            handler_dict[handler].run(req, res)
+            try:
+                handler_dict[handler].run(req, res)
+            except Exception as e:
+                logger = Log()
+                logger.error("service error. handler" + handler)
+                logger.error("req: " + str(req.msg))
+                logger.error("err: " + str(e))
             response_queue.put(res)         # 如果满了会阻塞，尽量避免阻塞, response 尽快消费
 
 

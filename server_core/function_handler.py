@@ -29,5 +29,3 @@ class FunctionHandler:
         self.handler(req, res)
         if callable(self.last_handler):
             self.last_handler(req, res)
-
-
