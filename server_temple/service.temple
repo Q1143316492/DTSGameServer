@@ -17,7 +17,7 @@ class {1}:
 
     @staticmethod
     def {0}_pretreatment(req, res):
-        req.deserialization()
+        pass
 
     @staticmethod
     def {0}_run(req, res):
@@ -40,11 +40,4 @@ class {1}:
 
     @staticmethod
     def {0}_aftertreatment(req, res):
-        try:
-            req.msg.pack_buffer(req.msg.get_handler(), json.dumps(res.content))
-        except Exception as e:
-            Log().warn("{0}_aftertreatment err. " + str(e) + "req " + str(req.msg))
-
-        if not res.msg.finish():
-            res.msg.pack_buffer(0, "err")
-            return
+        pass

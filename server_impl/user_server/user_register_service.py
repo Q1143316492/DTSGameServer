@@ -17,7 +17,8 @@ class UserRegisterService:
 
     @staticmethod
     def user_register_service_pretreatment(req, res):
-        req.deserialization()
+        req.check_contain_string("username")
+        req.check_contain_string("password")
 
     @staticmethod
     def user_register_service_run(req, res):
@@ -40,11 +41,4 @@ class UserRegisterService:
 
     @staticmethod
     def user_register_service_aftertreatment(req, res):
-        try:
-            req.msg.pack_buffer(req.msg.get_handler(), json.dumps(res.content))
-        except Exception as e:
-            Log().warn("user_register_service_aftertreatment err. " + str(e) + "req " + str(req.msg))
-
-        if not res.msg.finish():
-            res.msg.pack_buffer(0, "err")
-            return
+        pass

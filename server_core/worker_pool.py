@@ -14,20 +14,14 @@ def worker_function(request_queue, response_queue, handler_dict):
         res = Response(req.conn_id)
         handler = req.get_handler()
         if handler in handler_dict.keys():  # 根据 request 哈希到具体函数
-            try:
-                handler_dict[handler].run(req, res)
-            except Exception as e:
-                logger = Log()
-                logger.error("service error. handler" + handler)
-                logger.error("req: " + str(req.msg))
-                logger.error("err: " + str(e))
+            handler_dict[handler].run(req, res)
             response_queue.put(res)         # 如果满了会阻塞，尽量避免阻塞, response 尽快消费
 
 
 class WorkerPool:
 
     def __init__(self, mode=None):
-        self.mode = mode
+        self.mode = mode    # 默认使用单进程单线程模式
         self.logger = Log()
         self.conn_pool = None
 

@@ -2,4 +2,4 @@ import abc
 
 
 if __name__ == '__main__':
-    pass
+    print isinstance("asd", str)

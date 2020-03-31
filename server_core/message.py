@@ -1,6 +1,7 @@
 # coding=utf-8
 import struct
 from server_core import config
+from server_core.log import Log
 
 
 class Message:
@@ -59,19 +60,25 @@ class Message:
         send_buf = struct.pack(">i", self.__header_val)
         send_buf += struct.pack(">i", self.__handler_val)
         send_buf += self.__message_val
+        self.__state = Message.PKG_FINISH
         return send_buf
 
     def get_stream(self):
-        return self.__pack_buffer()
+        try:
+            return self.__pack_buffer()
+        except Exception as e:
+            Log().debug("get_stream err. " + e.message)
+            self.pack_buffer(self.__handler_val if self.__handler_val is not None else 0, "err")
+            return self.__pack_buffer()
 
-    # 直接构造消息
+    # 直接构造消息, 如果错误会返回特殊错误的包
     def pack_buffer(self, handler, buf):
         if not isinstance(handler, int):
             raise Exception("handler must be int")
         self.__header_val = len(buf)
         self.__handler_val = handler
         self.__message_val = buf
-        return self.__pack_buffer()
+        return self.get_stream()
 
     #    从缓冲区中读取对应字节
     #    @param 缓冲区，缓冲区大小，需要的字节

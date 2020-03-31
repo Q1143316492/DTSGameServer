@@ -1,4 +1,7 @@
+import json
+
 from server_core.message import Message
+from server_core.net_request import Request
 import socket
 import errno
 
@@ -13,8 +16,14 @@ err_d = (errno.EINPROGRESS, errno.EALREADY, errno.EWOULDBLOCK)
 recv_buf = ''
 
 msg = Message()
-msg.pack_buffer(1001, '{"name":"cwl", "passwd" : 123456}')
-fd.sendall(msg.get_stream())
+content = {
+    "name": "cwl",
+    "password": "123456"
+}
+req = Request()
+req.pack_buffer(1001, content)
+
+fd.sendall(req.msg.get_stream())
 
 msg.assign()
 
