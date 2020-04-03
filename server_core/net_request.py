@@ -76,7 +76,7 @@ class Request:
             self.parse_success = False
             self.parse_err = "key: " + key + "is not int"
             return False
-        if not min_val and val < min_val or not max_val and val > max_val:
+        if (min_val is not None and val < min_val) or (max_val is not None and val > max_val):
             self.parse_success = False
             self.parse_err = "key: " + key + " value range error"
             return False

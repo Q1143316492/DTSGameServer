@@ -43,6 +43,9 @@ ECHO_SERVER = 1000
 USER_LOGIN_SERVICE = 1001
 USER_REGISTER_SERVICE = 1002
 
+ROOM_ENTER_ROOM_SERVICE = 1010
+ROOM_QUERY_ROOM_USERS_SERVICE = 1011
+ROOM_QUERY_USER_BELONGED_ROOM_SERVICE = 1012
 
 # =====================================================================================================================
 

@@ -5,39 +5,41 @@ from server_core import config
 import json
 
 
+def {0}_pretreatment(controller, req, res):
+    # req.check_contain_string("username")
+    pass
+
+
+def {0}_run(controller, req, res):
+    if not req.parse_success or not req.content:
+        Log().warn("service %d req parse err %s" % (config.{2}, req.parse_err))
+        return
+
+    Log().debug("{0} service: " + str(req.msg))
+
+    # 获取参数
+    username = req.content["username"]
+    password = req.content["password"]
+
+    # 处理业务
+
+    # 设置返回 dict
+    res.content = {{
+        "ret": 0
+    }}
+
+
+def {0}_aftertreatment(controller, req, res):
+    pass
+
+
 class {1}:
 
     def __init__(self):
         if not hasattr(config, "{2}"):
             raise Exception("config file service id not define")
         self.handler_id = config.{2}
-        self.func_handler = FunctionHandler(self.handler_id, {1}.{0}_run)
-        self.func_handler.pre_handler = {1}.{0}_pretreatment
-        self.func_handler.last_handler = {1}.{0}_aftertreatment
+        self.func_handler = FunctionHandler(self.handler_id, {0}_run)
+        self.func_handler.pre_handler = {0}_pretreatment
+        self.func_handler.last_handler = {0}_aftertreatment
 
-    @staticmethod
-    def {0}_pretreatment(req, res):
-        pass
-
-    @staticmethod
-    def {0}_run(req, res):
-        if not req.parse_success or not req.content:
-            Log().warn("service %d req parse err" % config.USER_LOGIN_SERVICE)
-            return
-
-        Log().debug("login service: " + str(req.msg))
-
-        # 获取参数
-        username = req.content["username"]
-        password = req.content["password"]
-
-        # 处理业务
-
-        # 设置返回 dict
-        res.content = {{
-            "ret": 0
-        }}
-
-    @staticmethod
-    def {0}_aftertreatment(req, res):
-        pass

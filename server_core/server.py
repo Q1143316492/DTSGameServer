@@ -64,10 +64,10 @@ class Server:
                 self.network_server = LightServer(port)
                 self.logger.info("network mode light server")
 
-        self.work_process = WorkerPool()
+        self.work_process = WorkerPool(mode="multi")
 
         self.network_server.init(self.work_process)
-        self.work_process.init(self.network_server.conn_pool)
+        self.work_process.init(self.network_server.conn_pool, 4)
 
         self.network_server.start()
 

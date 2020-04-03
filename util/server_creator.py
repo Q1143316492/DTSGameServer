@@ -160,4 +160,13 @@ if __name__ == '__main__':
             {"service_name": "register"},
         ]
     })
+
+    sc.load_config({
+        "server_name": "room",
+        "service_list": [
+            {"service_name": "enter room"},
+            {"service_name": "query room users"},
+            {"service_name": "query user belonged room"},
+        ]
+    })
     sc.create()

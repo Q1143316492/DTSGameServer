@@ -1,59 +1,86 @@
+# coding=utf-8
 import json
 
 from server_core.message import Message
 from server_core.net_request import Request
+from server_core import config
 import socket
 import errno
 
-fd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# fd.connect(("117.78.5.122", 7736))
-fd.connect(("127.0.0.1", 7736))
-fd.setblocking(False)
 
 
-err_d = (errno.EINPROGRESS, errno.EALREADY, errno.EWOULDBLOCK)
+def test_server(handler, content):
+    fd = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    # fd.connect(("117.78.5.122", 7736))
+    fd.connect(("127.0.0.1", 7736))
+    fd.setblocking(False)
 
-recv_buf = ''
+    err_d = (errno.EINPROGRESS, errno.EALREADY, errno.EWOULDBLOCK)
 
-msg = Message()
-content = {
-    "name": "cwl",
-    "password": "123456"
-}
-req = Request()
-req.pack_buffer(1001, content)
+    recv_buf = ''
 
-fd.sendall(req.msg.get_stream())
+    msg = Message()
+    # content = {
+    #     "user_id": 23,
+    #     "sub_server_id": 1,
+    #     "room_type": 1
+    # }
+    req = Request()
+    req.pack_buffer(handler, content)
 
-msg.assign()
+    fd.sendall(req.msg.get_stream())
 
-ok = False
+    msg.assign()
 
-while True:
-    text = ''
-    try:
-        text = fd.recv(1024)
-        if not text:
-            err_code = 10000
-            fd.close()
+    ok = False
+
+    while True:
+        text = ''
+        try:
+            text = fd.recv(1024)
+            if not text:
+                err_code = 10000
+                fd.close()
+                break
+        except socket.error, (code, strerror):
+            if code not in err_d:
+                err_code = code
+                fd.close()
+                continue
+        recv_buf += text
+
+        # message
+        while len(recv_buf) != 0:
+            size = msg.recv(recv_buf)
+            recv_buf = recv_buf[size:]
+            if msg.finish():
+                print msg.__str__()
+                msg.assign()
+                ok = True
+
+        if ok:
             break
-    except socket.error, (code, strerror):
-        if code not in err_d:
-            err_code = code
-            fd.close()
-            continue
-    recv_buf += text
 
-    # message
-    while len(recv_buf) != 0:
-        size = msg.recv(recv_buf)
-        recv_buf = recv_buf[size:]
-        if msg.finish():
-            print msg.__str__()
-            msg.assign()
-            ok = True
+    fd.close()
 
-    if ok:
-        break
 
-fd.close()
+if __name__ == '__main__':
+    # 测试加入房间
+    test_server(config.ROOM_ENTER_ROOM_SERVICE, {
+        "user_id": 1,
+        "sub_server_id": 1,
+        "room_type": 1
+    })
+    test_server(config.ROOM_ENTER_ROOM_SERVICE, {
+        "user_id": 22,
+        "sub_server_id": 1,
+        "room_type": 1
+    })
+    test_server(config.ROOM_ENTER_ROOM_SERVICE, {
+        "user_id": 44,
+        "sub_server_id": 1,
+        "room_type": 1
+    })
+    test_server(config.ROOM_QUERY_ROOM_USERS_SERVICE, {
+        "room_id": 1
+    })
