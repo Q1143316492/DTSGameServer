@@ -2,6 +2,7 @@
 from server_core.log import Log
 from server_core.net_request import Request
 from server_core.net_response import Response
+from server_core import config
 
 
 class FunctionHandler:
@@ -25,20 +26,28 @@ class FunctionHandler:
         if callable(handler):
             self.last_handler = handler
 
+    def call(self, controller, req, res):
+        self.system_pretreatment(req, res)  # 字符流的 req.msg，变成 python dict 存在于 req.content
+        if callable(self.pre_handler):
+            self.pre_handler(controller, req, res)
+        self.handler(controller, req, res)
+        if callable(self.last_handler):
+            self.last_handler(controller, req, res)
+        self.system_aftertreatment(req, res)
+
     def run(self, controller, req, res):
-        try:
-            self.system_pretreatment(req, res)              # 字符流的 req.msg，变成 python dict 存在于 req.content
-            if callable(self.pre_handler):
-                self.pre_handler(controller, req, res)
-            self.handler(controller, req, res)
-            if callable(self.last_handler):
-                self.last_handler(controller, req, res)
-            self.system_aftertreatment(req, res)
-        except Exception as e:
-            logger = Log()
-            logger.error("[function_handler] service error. handler " + str(req.msg.get_handler()))
-            logger.error("req.msg: " + str(req.msg))
-            logger.error("err: " + e.message)
+        is_debug = config.ConfigLoader().get("debug")
+        if isinstance(is_debug, bool) and is_debug:
+            self.logger.info("debug mode...")
+            self.call(controller, req, res)
+        else:
+            try:
+                self.call(controller, req, res)
+            except Exception as e:
+                logger = Log()
+                logger.error("[function_handler] service error. handler " + str(req.msg.get_handler()))
+                logger.error("req.msg: " + str(req.msg))
+                logger.error("err: " + e.message)
 
     def inline_call(self, controller, req_dict):
         try:

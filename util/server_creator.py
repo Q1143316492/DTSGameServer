@@ -153,20 +153,29 @@ if __name__ == '__main__':
     # sc.create_service()
 
     sc = ServerCreator()
-    sc.load_config({
-        "server_name": "user",
-        "service_list": [
-            {"service_name": "login"},
-            {"service_name": "register"},
-        ]
-    })
+
+    # sc.load_config({
+    #     "server_name": "user",
+    #     "service_list": [
+    #         {"service_name": "login"},
+    #         {"service_name": "register"},
+    #     ]
+    # })
+
+    # sc.load_config({
+    #     "server_name": "room",
+    #     "service_list": [
+    #         {"service_name": "enter room"},
+    #         {"service_name": "query room users"},
+    #         {"service_name": "query user belonged room"},
+    #     ]
+    # })
 
     sc.load_config({
-        "server_name": "room",
+        "server_name": "synchronization",
         "service_list": [
-            {"service_name": "enter room"},
-            {"service_name": "query room users"},
-            {"service_name": "query user belonged room"},
+            {"service_name": "query user transform"},
+            {"service_name": "report transform"},
         ]
     })
     sc.create()

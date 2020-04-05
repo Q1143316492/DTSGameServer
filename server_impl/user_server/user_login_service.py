@@ -20,6 +20,7 @@ def user_login_service_run(controller, req, res):
     # 获取参数
     username = req.content["username"]
     password = req.content["password"]
+    user_id = 0
     # 处理业务
     login_success = False
 
@@ -28,13 +29,20 @@ def user_login_service_run(controller, req, res):
         "netease2": "123456",
         "netease3": "123456",
     }
+    user_id_map = {
+        "netease1": 1,
+        "netease2": 2,
+        "netease3": 3,
+    }
     if username in user_list and password == user_list[username]:
         login_success = True
+        user_id = user_id_map[username]
 
     # 设置返回 dict
     res.content = {
         "ret": 0,
-        "login_success": login_success
+        "login_success": login_success,
+        "user_id": user_id
     }
 
 

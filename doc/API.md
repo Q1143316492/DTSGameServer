@@ -4,7 +4,7 @@
 
 # 1.0 用户管理 user_server
 
-## 1.1 用户登入[user_login_service]
+## 1.1 用户登入[user_login_service] [1001]
 
 **Request**:
 
@@ -19,10 +19,11 @@
 | ------------- | ---- | ------------ |
 | ret           | int  | 标注请求结果 |
 | login_success | bool | 是否允许登入 |
+| user_id       | int  | 用户id       |
 
 
 
-## 1.2 用户注册[user_register_service]
+## 1.2 用户注册[user_register_service] [1002]
 
 **Request**:
 
@@ -50,7 +51,7 @@
 
 这块接口控制玩家加入场景的行为。
 
-## 2.1 玩家加入一个游戏场景[enter_room_service]
+## 2.1 玩家加入一个游戏场景[enter_room_service] [1010]
 
 **note:**
 
@@ -78,7 +79,7 @@ ps:
 
 
 
-## 2.2 询问玩家所在房间有哪些其他玩家[query_room_users_service]
+## 2.2 询问玩家所在房间有哪些其他玩家[query_room_users_service] [1011]
 
 **note:**
 
@@ -100,7 +101,7 @@ ps:
 
 
 
-## 2.3 询问玩家所在房间[room_query_user_belonged_room_service]
+## 2.3 询问玩家所在房间[room_query_user_belonged_room_service] [1012]
 
 **note:**
 
@@ -124,23 +125,45 @@ ps:
 
 
 
-# 3.0 游戏玩家互动管理
+# 3.0 游戏玩家同步管理 synchronization_server
 
-## 3.1 询问有关玩家的信息[enter_init_room_service]
+## 3.1 询问有关玩家的信息[query_user_transform_service] [1020]
 
 **note:**
 
-游戏开始，玩家加入一个初始化的场景。在这里选择下一步游戏行为。目前先让全服玩家在同一场景
+查询某个玩家多位置信息
 
 **Request**:
 
-| 属性名        | 类型   | 备注                                       |
-| ------------- | ------ | ------------------------------------------ |
-| username      | string | 用户名                                     |
-| sub_server_id | int    | 加入服务器分区id。现在默认都在一个服务下。 |
+| 属性名  | 类型 | 备注   |
+| ------- | ---- | ------ |
+| user_id | int  | 用户id |
+|         |      |        |
 
 **Response**
 
-| 属性名 | 类型 | 备注         |
-| ------ | ---- | ------------ |
-| ret    | int  | 标注请求结果 |
+| 属性名   | 类型   | 备注                         |
+| -------- | ------ | ---------------------------- |
+| ret      | int    | 标注请求结果                 |
+| err_msg  | string | 错误信息                     |
+| position | string | 三个浮点值用分号拼接的字符串 |
+| rotation | string | 三个浮点值用分号拼接的字符串 |
+
+
+
+## 3.1 向服务器报告自己的信息[report_transform_service] [1021]
+
+**Request**:
+
+| 属性名   | 类型   | 备注                         |
+| -------- | ------ | ---------------------------- |
+| user_id  | int    | 用户id                       |
+| position | string | 三个浮点值用分号拼接的字符串 |
+| rotation | string | 三个浮点值用分号拼接的字符串 |
+
+**Response**
+
+| 属性名  | 类型   | 备注         |
+| ------- | ------ | ------------ |
+| ret     | int    | 标注请求结果 |
+| err_msg | string | 错误信息     |

@@ -66,21 +66,35 @@ def test_server(handler, content):
 
 if __name__ == '__main__':
     # 测试加入房间
-    test_server(config.ROOM_ENTER_ROOM_SERVICE, {
-        "user_id": 1,
-        "sub_server_id": 1,
-        "room_type": 1
-    })
-    test_server(config.ROOM_ENTER_ROOM_SERVICE, {
-        "user_id": 22,
-        "sub_server_id": 1,
-        "room_type": 1
-    })
-    test_server(config.ROOM_ENTER_ROOM_SERVICE, {
-        "user_id": 44,
-        "sub_server_id": 1,
-        "room_type": 1
-    })
-    test_server(config.ROOM_QUERY_ROOM_USERS_SERVICE, {
-        "room_id": 1
+    # test_server(config.ROOM_ENTER_ROOM_SERVICE, {
+    #     "user_id": 1,
+    #     "sub_server_id": 1,
+    #     "room_type": 1
+    # })
+    # test_server(config.ROOM_ENTER_ROOM_SERVICE, {
+    #     "user_id": 22,
+    #     "sub_server_id": 1,
+    #     "room_type": 1
+    # })
+    # test_server(config.ROOM_ENTER_ROOM_SERVICE, {
+    #     "user_id": 44,
+    #     "sub_server_id": 1,
+    #     "room_type": 1
+    # })
+    # test_server(config.ROOM_QUERY_ROOM_USERS_SERVICE, {
+    #     "room_id": 1
+    # })
+
+    # test_server(config.SYNCHRONIZATION_REPORT_TRANSFORM_SERVICE, {
+    #     "user_id": 1,
+    #     "position": "0;0;0",
+    #     "rotation": "0;0;0"
+    # })
+    # test_server(config.SYNCHRONIZATION_QUERY_USER_TRANSFORM_SERVICE, {
+    #     "user_id": 1
+    # })
+
+    test_server(config.USER_LOGIN_SERVICE, {
+        "username": "netease1",
+        "password": "123456"
     })

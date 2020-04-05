@@ -94,10 +94,7 @@ class WorkerPool:
     # 最后调用 self.conn_pool.send_event(conn_id, res)， res 会在合适的时候发给客户端
     def message_handler(self, conn_id, msg):
         if self.mode == "multi":
-            # worker_id = random.randint(0, self.process_count - 1)
-            # todo test
-            self.auto_incr += 1
-            worker_id = self.auto_incr % (self.process_count - 1)
+            worker_id = random.randint(0, self.process_count - 1)
             self.logger.debug("worker {} called".format(worker_id))
 
             try:

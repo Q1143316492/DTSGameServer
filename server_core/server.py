@@ -21,6 +21,7 @@ class Server:
         self.network_server = None
         self.work_process = None
         self.logger = Log()
+        self.conf_loader = ConfigLoader()
 
     def add_handler(self, handler_func):
         try:
@@ -51,7 +52,10 @@ class Server:
             return True
         return False
 
-    def start(self, port=7736, mode=None):
+    def start(self, port=None, mode=None):
+
+        if port is None:
+            port = self.conf_loader.get_int("port", 0)
 
         if not self.pre_bind_io_mode(port, mode):
             if hasattr(select, 'epoll'):

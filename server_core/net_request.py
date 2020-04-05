@@ -64,7 +64,7 @@ class Request:
             return False
         if not isinstance(self.content[key], str):
             self.parse_success = False
-            self.parse_err = "key: " + key + "is not str"
+            self.parse_err = "key: " + key + " is not str"
             return False
         return True
 

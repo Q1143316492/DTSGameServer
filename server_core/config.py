@@ -4,8 +4,8 @@ import threading
 import os
 import errno
 
-project_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
-config_path = os.path.join(project_path, "config")
+project_path = os.path.abspath(os.path.dirname(os.path.dirname(__file__))).replace("\\", "/")
+config_path = os.path.join(project_path, "config").replace("\\", "/")
 
 # ======================================================================================================================
 # server state
@@ -47,16 +47,22 @@ ROOM_ENTER_ROOM_SERVICE = 1010
 ROOM_QUERY_ROOM_USERS_SERVICE = 1011
 ROOM_QUERY_USER_BELONGED_ROOM_SERVICE = 1012
 
+SYNCHRONIZATION_REPORT_TRANSFORM_SERVICE = 1020
+SYNCHRONIZATION_QUERY_USER_TRANSFORM_SERVICE = 1021
+
 # =====================================================================================================================
 
 
 # 只支持加载json配置表
 class ConfigLoader(object):
     _instance_lock = threading.Lock()
+    is_load = False
 
     def __init__(self):
         self.config_contain = ""
         self.config_dict = {}
+        if not ConfigLoader.is_load:
+            self.load(os.path.join(config_path, "core.json").replace("\\", "/"))
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '_instance'):
