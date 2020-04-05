@@ -3,6 +3,7 @@ from server_core.log import Log
 from server_core.net_request import Request
 from server_core.net_response import Response
 from server_core import config
+import copy
 
 
 class FunctionHandler:
@@ -10,7 +11,7 @@ class FunctionHandler:
     def __init__(self, handler_id, handler):
         self.handler_id = handler_id
         self.pre_handler = None
-        self.handler = handler
+        self.handler = copy.copy(handler)
         self.last_handler = None
 
         if not isinstance(self.handler_id, int) or not callable(handler):
@@ -20,11 +21,11 @@ class FunctionHandler:
 
     def set_pre_handler(self, handler):
         if callable(handler):
-            self.pre_handler = handler
+            self.pre_handler = copy.copy(handler)
 
     def set_last_handler(self, handler):
         if callable(handler):
-            self.last_handler = handler
+            self.last_handler = copy.copy(handler)
 
     def call(self, controller, req, res):
         self.system_pretreatment(req, res)  # 字符流的 req.msg，变成 python dict 存在于 req.content
@@ -38,7 +39,7 @@ class FunctionHandler:
     def run(self, controller, req, res):
         is_debug = config.ConfigLoader().get("debug")
         if isinstance(is_debug, bool) and is_debug:
-            self.logger.info("debug mode...")
+            self.logger.debug("debug mode...")
             self.call(controller, req, res)
         else:
             try:

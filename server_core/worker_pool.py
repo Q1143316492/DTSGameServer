@@ -95,8 +95,6 @@ class WorkerPool:
     def message_handler(self, conn_id, msg):
         if self.mode == "multi":
             worker_id = random.randint(0, self.process_count - 1)
-            self.logger.debug("worker {} called".format(worker_id))
-
             try:
                 self.request_queues[worker_id].put_nowait(Request(conn_id, msg))
             except Queue.Full:

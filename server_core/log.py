@@ -23,19 +23,7 @@ class Log(object):
     def __init__(self):
         self.file_name = time.strftime("DTSGameServer-%Y-%m-%d.log", time.localtime())
         self.logger = logging.getLogger("core")
-        self.logger.setLevel(logging.DEBUG)
-
-    def set_level_debug(self):
-        self.logger.setLevel(logging.DEBUG)
-
-    def set_level_info(self):
         self.logger.setLevel(logging.INFO)
-
-    def set_level_warn(self):
-        self.logger.setLevel(logging.WARN)
-
-    def set_level_error(self):
-        self.logger.setLevel(logging.ERROR)
 
     def __new__(cls, *args, **kwargs):
         if not hasattr(cls, '_instance'):

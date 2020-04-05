@@ -3,7 +3,7 @@ from server_core import config
 from server_core.connection import Connection
 from server_core.log import Log
 from server_core.message import Message
-import Queue
+from multiprocessing import Queue
 import uuid
 
 

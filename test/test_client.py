@@ -81,9 +81,9 @@ if __name__ == '__main__':
     #     "sub_server_id": 1,
     #     "room_type": 1
     # })
-    # test_server(config.ROOM_QUERY_ROOM_USERS_SERVICE, {
-    #     "room_id": 1
-    # })
+    test_server(config.ROOM_QUERY_ROOM_USERS_SERVICE, {
+        "room_id": 1
+    })
 
     # test_server(config.SYNCHRONIZATION_REPORT_TRANSFORM_SERVICE, {
     #     "user_id": 1,
@@ -94,7 +94,7 @@ if __name__ == '__main__':
     #     "user_id": 1
     # })
 
-    test_server(config.USER_LOGIN_SERVICE, {
-        "username": "netease1",
-        "password": "123456"
-    })
+    # test_server(config.USER_LOGIN_SERVICE, {
+    #     "username": "netease1",
+    #     "password": "123456"
+    # })
