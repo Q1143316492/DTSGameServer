@@ -1,5 +1,6 @@
 # coding=utf-8
 import struct
+import time
 from server_core import config
 from server_core.log import Log
 
@@ -22,6 +23,7 @@ class Message:
     PKG_FINISH = 3
 
     def __init__(self):
+        self.__use_time = None  # todo del for test
         self.__header_size = 4
         self.__handler_size = 4
 

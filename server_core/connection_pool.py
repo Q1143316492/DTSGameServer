@@ -3,20 +3,21 @@ from server_core import config
 from server_core.connection import Connection
 from server_core.log import Log
 from server_core.message import Message
-from multiprocessing import Queue
+import multiprocessing
+import Queue
 import uuid
 
 
 class ConnectionPool:
 
     def __init__(self):
-        self.connections = {}  # conn_id : connection
+        self.connections = {}  # key = conn_id, val = connection
         self.auto_id = 0
         self.logger = Log()
         self.workers = None
         self.mode = None
         self.auto_increase = 0
-        self.send_queue = {}  # conn_id : Queue { msg1, msg2, ... }
+        self.send_queue = {}  # conn_id : Queue { msg1, msg2, ... } IO复用才需要，普通的直接发了
 
     def init(self, workers, mode):
         self.workers = workers
@@ -32,6 +33,7 @@ class ConnectionPool:
             self.logger.debug("connection count = " + str(len(self.connections)))
             return conn_id
         else:
+            self.logger.warn("connect pool is full")
             return None
 
     def update(self):
@@ -44,11 +46,9 @@ class ConnectionPool:
             self.__del_conn(conn_id)
 
     def __del_conn(self, conn_id):
-        # 可写的时候，和IO复用异常的时候，都会出现关闭连接，可能会出现重复关闭
         if conn_id in self.send_queue.keys():
             del self.send_queue[conn_id]
-        if conn_id in self.connections.keys():
-            del self.connections[conn_id]
+        del self.connections[conn_id]
 
     # 返回是否有连接退出
     def recv_event(self, conn_id, use_et=False):
@@ -72,7 +72,7 @@ class ConnectionPool:
             self._send_event(conn_id, msg)
         elif self.mode == config.SERVER_MODE_SELECT or self.mode == config.SERVER_MODE_EPOLL:
             if conn_id not in self.send_queue.keys():
-                self.send_queue[conn_id] = Queue.Queue()
+                self.send_queue[conn_id] = multiprocessing.Queue()
                 self.send_queue[conn_id].put(msg)
             else:
                 self.send_queue[conn_id].put(msg)
@@ -85,7 +85,6 @@ class ConnectionPool:
             try:
                 msg = self.send_queue[conn_id].get_nowait()
             except Queue.Empty:
-                del self.send_queue[conn_id]
                 return True
             else:
                 self._send_event(conn_id, msg)

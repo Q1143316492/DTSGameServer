@@ -7,7 +7,7 @@ from server_impl.synchronization_server import synchronization_server
 
 if __name__ == '__main__':
     server = Server("cwl server", "01")
-    server.start(mode="light")
+    server.start(mode="select")
 
     # 加载 service
     user_server.UserServer(server)

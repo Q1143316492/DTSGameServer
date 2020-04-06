@@ -52,6 +52,8 @@ class WorkerPool:
 
     def init(self, conn_pool, process_count=1):
         self.conn_pool = conn_pool
+        if process_count < 1 or process_count > 10:
+            process_count = 1
         self.process_count = process_count
 
     def start(self):
@@ -60,10 +62,10 @@ class WorkerPool:
             self.common_tools.mem_cache = MemCacheMultiProcess()
             self.common_tools.handler_dict = self.handler_dict
             for i in range(self.process_count):
-                request_queue = multiprocessing.Queue(100)
+                request_queue = multiprocessing.Queue(1000)
                 self.request_queues.append(request_queue)
 
-                response_queue = multiprocessing.Queue(100)
+                response_queue = multiprocessing.Queue(1000)
                 self.response_queues.append(response_queue)
 
                 worker = multiprocessing.Process(
@@ -73,7 +75,7 @@ class WorkerPool:
                 self.work_progress.append(worker)
         else:
             self.logger.info("worker pool. light mode")
-            self.common_tools.mem_cache = MemCacheSingletonProcess()
+            self.common_tools.mem_cache = MemCacheMultiProcess()
             self.common_tools.handler_dict = self.handler_dict
 
         self.logger.info("work process start success")
@@ -95,6 +97,10 @@ class WorkerPool:
     def message_handler(self, conn_id, msg):
         if self.mode == "multi":
             worker_id = random.randint(0, self.process_count - 1)
+
+            for v in self.request_queues:
+                print "size: ", v.qsize()
+
             try:
                 self.request_queues[worker_id].put_nowait(Request(conn_id, msg))
             except Queue.Full:
@@ -104,21 +110,21 @@ class WorkerPool:
             res = Response(conn_id)
             handler = req.get_handler()
             if handler in self.handler_dict.keys():  # 根据 request 哈希到具体函数
-                self.handler_dict[handler].run(req, res)
+                self.handler_dict[handler].run(self.common_tools, req, res)
                 self.response_queue.append(res)
 
     # 消费处理好的 response，发向客户端
     def message_consumer(self):
-        if self.mode is None:
-            # 轻量级模式下：IO复用+单进程单线程
-            if len(self.response_queue):
-                res = self.response_queue[0]
-                self.response_queue = self.response_queue[1:]
-                self.conn_pool.send_handler(res.conn_id, res.msg)
-        else:
+        if self.mode == "multi":
             for response_queue in self.response_queues:
                 try:
                     res = response_queue.get_nowait()
                     self.conn_pool.send_handler(res.conn_id, res.msg)
                 except Queue.Empty:
                     pass
+        else:
+            # 轻量级模式下：IO复用+单进程单线程
+            if len(self.response_queue):
+                res = self.response_queue[0]
+                self.response_queue = self.response_queue[1:]
+                self.conn_pool.send_handler(res.conn_id, res.msg)

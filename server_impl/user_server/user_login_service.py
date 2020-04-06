@@ -8,6 +8,7 @@ import json
 def user_login_service_pretreatment(controller, req, res):
     req.check_contain_string("username")
     req.check_contain_string("password")
+    req.check_contain_int("time")
 
 
 def user_login_service_run(controller, req, res):
@@ -21,6 +22,7 @@ def user_login_service_run(controller, req, res):
     username = req.content["username"]
     password = req.content["password"]
     user_id = 0
+    req_time = req.content["time"]
     # 处理业务
     login_success = False
 
@@ -42,7 +44,8 @@ def user_login_service_run(controller, req, res):
     res.content = {
         "ret": 0,
         "login_success": login_success,
-        "user_id": user_id
+        "user_id": user_id,
+        "time": req_time
     }
 
 

@@ -3,6 +3,7 @@ from server_core.log import Log
 from server_core.net_request import Request
 from server_core.net_response import Response
 from server_core import config
+import time
 import copy
 
 
@@ -46,9 +47,9 @@ class FunctionHandler:
                 self.call(controller, req, res)
             except Exception as e:
                 logger = Log()
-                logger.error("[function_handler] service error. handler " + str(req.msg.get_handler()))
-                logger.error("req.msg: " + str(req.msg))
-                logger.error("err: " + e.message)
+                logger.error("[function_handler] service error. handler " + str(req.msg.get_handler())
+                             + "\nreq.msg: " + str(req.msg)
+                             + "err: " + e.message)
 
     def inline_call(self, controller, req_dict):
         try:

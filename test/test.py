@@ -1,3 +1,5 @@
+import Queue
+
 
 class TestLock:
 
@@ -12,7 +14,6 @@ class TestLock:
 
 
 if __name__ == '__main__':
-    t = TestLock()
-
-    with t:
-        pass
+    q = Queue.Queue()
+    q.put(1)
+    print q.qsize()

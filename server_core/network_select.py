@@ -55,8 +55,9 @@ class Select(NetworkServerBase):
                 # 【1】如果读的时候发现客户端还活着，要把句柄加入写事件的监听
                 if not is_exit and s not in self.outputs:
                     self.outputs.append(s)
+
                 # 【2】如果读的时候发现客户端死了，要收尾
-                else:
+                if is_exit:
                     if s in self.outputs:
                         self.outputs.remove(s)
                     self.inputs.remove(s)
