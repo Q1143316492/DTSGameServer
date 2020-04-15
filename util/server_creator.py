@@ -91,7 +91,7 @@ class ServerCreator:
         result_content += server_class_content.format(ServerCreator.create_name([server_name, "Server"], 1))
 
         for service in service_list:
-            word_list = [server_name]
+            word_list = []
             word_list.extend(service["service_name"].split(" "))
             word_list.append("service")
             service_name_type0 = ServerCreator.create_name(word_list, 0)
@@ -111,7 +111,7 @@ class ServerCreator:
         with open(self.service_temple_path) as f:
             content = f.read()
             for service in service_list:
-                word_list = [server_name]
+                word_list = []
                 word_list.extend(service["service_name"].split(" "))
                 word_list.append("service")
                 service_name_type0 = ServerCreator.create_name(word_list, 0)
@@ -174,8 +174,8 @@ if __name__ == '__main__':
     sc.load_config({
         "server_name": "synchronization",
         "service_list": [
-            {"service_name": "query user transform"},
-            {"service_name": "report transform"},
+            {"service_name": "synchronization query user transform"},
+            {"service_name": "synchronization report transform"},
         ]
     })
     sc.create()

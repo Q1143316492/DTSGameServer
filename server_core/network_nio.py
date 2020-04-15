@@ -29,7 +29,7 @@ class LightServer(NetworkServerBase):
     def run(self):
         self.state = config.SERVER_RUN
         while True:
-            time.sleep(0.1)
+            # time.sleep(0.1)
             self.__accept_client()
             self.__update_client()
             self.workers.message_consumer()

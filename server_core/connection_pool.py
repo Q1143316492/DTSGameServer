@@ -48,7 +48,8 @@ class ConnectionPool:
     def __del_conn(self, conn_id):
         if conn_id in self.send_queue.keys():
             del self.send_queue[conn_id]
-        del self.connections[conn_id]
+        if conn_id in self.connections.keys():
+            del self.connections[conn_id]
 
     # 返回是否有连接退出
     def recv_event(self, conn_id, use_et=False):
@@ -65,8 +66,6 @@ class ConnectionPool:
                 return True
         return False
 
-    # 如果是普通的 NIO 服务器，直接向客户端发消息
-    # 如果用了 IO 复用，放到待发送队列，等待可写事件
     def send_handler(self, conn_id, msg):
         if self.mode == config.SERVER_MODE_EASY:
             self._send_event(conn_id, msg)

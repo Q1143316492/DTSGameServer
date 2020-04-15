@@ -6,11 +6,11 @@ from server_impl.server_config import ckv
 import json
 
 
-def room_query_user_belonged_room_service_pretreatment(controller, req, res):
+def query_user_belonged_room_service_pretreatment(controller, req, res):
     req.check_contain_int("user_id")
 
 
-def room_query_user_belonged_room_service_run(controller, req, res):
+def query_user_belonged_room_service_run(controller, req, res):
     if not req.parse_success or not req.content:
         Log().warn("service %d req parse err %s" % (config.ROOM_QUERY_USER_BELONGED_ROOM_SERVICE, req.parse_err))
         return
@@ -40,17 +40,17 @@ def room_query_user_belonged_room_service_run(controller, req, res):
     }
 
 
-def room_query_user_belonged_room_service_aftertreatment(controller, req, res):
+def query_user_belonged_room_service_aftertreatment(controller, req, res):
     pass
 
 
-class RoomQueryUserBelongedRoomService:
+class QueryUserBelongedRoomService:
 
     def __init__(self):
         if not hasattr(config, "ROOM_QUERY_USER_BELONGED_ROOM_SERVICE"):
             raise Exception("config file service id not define")
         self.handler_id = config.ROOM_QUERY_USER_BELONGED_ROOM_SERVICE
-        self.func_handler = FunctionHandler(self.handler_id, room_query_user_belonged_room_service_run)
-        self.func_handler.pre_handler = room_query_user_belonged_room_service_pretreatment
-        self.func_handler.last_handler = room_query_user_belonged_room_service_aftertreatment
+        self.func_handler = FunctionHandler(self.handler_id, query_user_belonged_room_service_run)
+        self.func_handler.pre_handler = query_user_belonged_room_service_pretreatment
+        self.func_handler.last_handler = query_user_belonged_room_service_aftertreatment
 

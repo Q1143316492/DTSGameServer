@@ -18,14 +18,12 @@ def user_login_service_run(controller, req, res):
 
     Log().debug("login service: " + str(req.msg))
 
-    # 获取参数
     username = req.content["username"]
     password = req.content["password"]
     user_id = 0
     req_time = req.content["time"]
-    # 处理业务
-    login_success = False
 
+    login_success = False
     user_list = {
         "netease1": "123456",
         "netease2": "123456",
@@ -40,7 +38,6 @@ def user_login_service_run(controller, req, res):
         login_success = True
         user_id = user_id_map[username]
 
-    # 设置返回 dict
     res.content = {
         "ret": 0,
         "login_success": login_success,

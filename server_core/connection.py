@@ -39,8 +39,7 @@ class Connection:
             size = self.msg.recv(self.recv_buf)
             self.recv_buf = self.recv_buf[size:]
             if self.msg.finish():
-                self.logger.debug("recv msg" + self.msg.__str__())
-
+                # self.logger.debug("recv msg" + self.msg.__str__())
                 self.workers.message_handler(self.conn_id, self.msg)
                 self.msg.assign()
 
