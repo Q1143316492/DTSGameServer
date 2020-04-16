@@ -24,7 +24,7 @@ def close(fd):
     try:
         fd.close()
     except Exception as e:
-        log.error("test socket close fail err:" + e.message)
+        log.error("test_code socket close fail err:" + e.message)
 
 
 def server_temple():

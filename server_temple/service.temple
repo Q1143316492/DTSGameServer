@@ -2,7 +2,7 @@
 from server_core.function_handler import FunctionHandler
 from server_core.log import Log
 from server_core import config
-import json
+from server_impl.server_config import ckv
 
 
 def {0}_pretreatment(controller, req, res):

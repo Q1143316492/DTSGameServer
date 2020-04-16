@@ -16,18 +16,19 @@ def user_register_service_run(controller, req, res):
         Log().warn("service %d req parse err" % config.USER_LOGIN_SERVICE)
         return
 
-    Log().debug("login service: " + str(req.msg))
+    Log().debug("register service: " + str(req.msg))
 
     # 获取参数
     username = req.content["username"]
     password = req.content["password"]
 
-    # 处理业务
+    # 处理业务 TODO
     print "register_call"
 
     # 设置返回 dict
     res.content = {
-        "ret": 0
+        "ret": 0,
+        "register_success": False
     }
 
 
@@ -44,3 +45,11 @@ class UserRegisterService:
         self.func_handler = FunctionHandler(self.handler_id, user_register_service_run)
         self.func_handler.pre_handler = user_register_service_pretreatment
         self.func_handler.last_handler = user_register_service_aftertreatment
+
+
+if __name__ == '__main__':
+    from server_impl.test_client import TestClient
+    TestClient.send(config.USER_REGISTER_SERVICE, {
+        "username": "cwl",
+        "password": "123"
+    })

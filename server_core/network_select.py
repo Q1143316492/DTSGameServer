@@ -46,7 +46,6 @@ class Select(NetworkServerBase):
     def __update_readable(self):
         for s in self.readable:
             if s is self.server_fd:
-                # 客户端接入
                 self.__accept_client()
             else:
                 conn_id = self.socket_to_conn_id_dict[s]
@@ -67,13 +66,13 @@ class Select(NetworkServerBase):
 
     def __update_writable(self):
         for s in self.writable:
-            conn_id = self.socket_to_conn_id_dict[s]
-            is_empty = self.conn_pool.trigger_send_event(conn_id)
-            if is_empty:
-                self.outputs.remove(s)
+            if s in self.socket_to_conn_id_dict:
+                conn_id = self.socket_to_conn_id_dict[s]
+                self.conn_pool.trigger_send_event(conn_id)
 
     def __update_exceptional(self):
         for s in self.exceptional:
+            print "__update_exceptional"
             self.inputs.remove(s)
             if s in self.socket_to_conn_id_dict.keys():
                 conn_id = self.socket_to_conn_id_dict[s]

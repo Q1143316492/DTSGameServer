@@ -87,7 +87,6 @@ class ConnectionPool:
                 return True
             else:
                 self._send_event(conn_id, msg)
-                return False
 
     def trigger_connection_out_event(self, conn_id):
         self.__del_conn(conn_id)

@@ -51,6 +51,10 @@ class MemCacheMultiProcess:
             return self._dict[key]
         return None
 
+    def remove(self, key):
+        if key in self._dict:
+            del self._dict[key]
+
     def compare_and_set(self, key, except_val, set_val):
         ret = False
         self._lock.acquire()

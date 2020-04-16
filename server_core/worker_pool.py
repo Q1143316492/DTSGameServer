@@ -4,6 +4,7 @@ from server_core.net_request import Request
 from server_core.net_response import Response
 from server_core.function_handler import FunctionHandler
 from server_core.memcache import MemCacheMultiProcess, MemCacheSingletonProcess
+from server_core.event_controller import EventController
 import multiprocessing
 import Queue
 import random
@@ -24,7 +25,12 @@ class CommonTools:
     def __init__(self):
         self.mem_cache = None
         self.handler_dict = None
+        self.events = None
 
+    def init(self, handler_dict):
+        self.mem_cache = MemCacheMultiProcess()
+        self.handler_dict = handler_dict
+        self.events = EventController()
 
 class WorkerPool:
 
@@ -59,8 +65,9 @@ class WorkerPool:
     def start(self):
         if self.mode == "multi":
             self.logger.info("worker pool multiprocess mode")
-            self.common_tools.mem_cache = MemCacheMultiProcess()
-            self.common_tools.handler_dict = self.handler_dict
+
+            self.common_tools.init()
+
             for i in range(self.process_count):
                 request_queue = multiprocessing.Queue(1000)
                 self.request_queues.append(request_queue)
@@ -75,8 +82,7 @@ class WorkerPool:
                 self.work_progress.append(worker)
         else:
             self.logger.info("worker pool. light mode")
-            self.common_tools.mem_cache = MemCacheMultiProcess()
-            self.common_tools.handler_dict = self.handler_dict
+            self.common_tools.init(self.handler_dict)
 
         self.logger.info("work process start success")
 
@@ -98,9 +104,6 @@ class WorkerPool:
         if self.mode == "multi":
             worker_id = random.randint(0, self.process_count - 1)
 
-            for v in self.request_queues:
-                print "size: ", v.qsize()
-
             try:
                 self.request_queues[worker_id].put_nowait(Request(conn_id, msg))
             except Queue.Full:
@@ -109,6 +112,7 @@ class WorkerPool:
             req = Request(conn_id, msg)
             res = Response(conn_id)
             handler = req.get_handler()
+            print "recv:", msg
             if handler in self.handler_dict.keys():  # 根据 request 哈希到具体函数
                 self.handler_dict[handler].run(self.common_tools, req, res)
                 self.response_queue.append(res)
@@ -126,5 +130,6 @@ class WorkerPool:
             # 轻量级模式下：IO复用+单进程单线程
             if len(self.response_queue):
                 res = self.response_queue[0]
+                # print res.msg
                 self.response_queue = self.response_queue[1:]
                 self.conn_pool.send_handler(res.conn_id, res.msg)

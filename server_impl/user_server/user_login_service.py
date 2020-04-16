@@ -44,6 +44,7 @@ def user_login_service_run(controller, req, res):
         "user_id": user_id,
         "time": req_time
     }
+    print res.content
 
 
 def user_login_service_aftertreatment(controller, req, res):
@@ -59,3 +60,20 @@ class UserLoginService:
         self.func_handler = FunctionHandler(self.handler_id, user_login_service_run)
         self.func_handler.pre_handler = user_login_service_pretreatment
         self.func_handler.last_handler = user_login_service_aftertreatment
+
+
+if __name__ == '__main__':
+    pass
+    from server_impl.test_client import TestClient
+
+    # TestClient.send(config.USER_LOGIN_SERVICE, {
+    #     "username": "netease1",
+    #     "password": "123456",
+    #     "time": 5
+    # })
+    #
+    # TestClient.send(config.USER_LOGIN_SERVICE, {
+    #     "username": "netease33",
+    #     "password": "123456",
+    #     "time": 5
+    # })

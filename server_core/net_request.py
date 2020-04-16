@@ -73,9 +73,15 @@ class Request:
             return False
         val = self.content[key]
         if not isinstance(val, int):
-            self.parse_success = False
-            self.parse_err = "key: " + key + "is not int"
-            return False
+            try:
+                val = int(val)
+            except Exception as e:
+                self.parse_success = False
+                self.parse_err = "val: " + str(val) + "is not int. " + str(e)
+                return False
+            else:
+                return True
+
         if (min_val is not None and val < min_val) or (max_val is not None and val > max_val):
             self.parse_success = False
             self.parse_err = "key: " + key + " value range error"

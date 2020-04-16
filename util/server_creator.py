@@ -49,10 +49,14 @@ class ServerCreator:
         self.service_temple_path = os.path.join(self.folder_path, "service.temple").replace("\\", "/")
         self.conf_dict = None
         self.server_create_folder = None
+        self.server_name_list = []
 
     def load_config(self, conf_dict):
         self.conf_dict = conf_dict
-        self.server_create_folder = ServerCreator.create_name([self.conf_dict["server_name"], "server"], 0)
+        self.server_name_list = []
+        self.server_name_list.extend(self.conf_dict["server_name"].split())
+        self.server_name_list.append("server")
+        self.server_create_folder = ServerCreator.create_name(self.server_name_list, 0)
 
     @staticmethod
     # 拼接字符串, 例如
@@ -73,14 +77,16 @@ class ServerCreator:
             return ""
 
     def create_server(self):
-        server_name = self.conf_dict["server_name"]
+        server_name = self.conf_dict["server_name"]         # 可能是多个单词
         service_list = self.conf_dict["service_list"]
 
         result_content = ''
         result_content += '# coding=utf-8\n'
 
+        # 添加 import 部分代码
         for service in service_list:
-            word_list = [server_name]
+            word_list = []
+            word_list.extend(server_name.split(" "))
             word_list.extend(service["service_name"].split(" "))
             word_list.append("service")
             service_name_type0 = ServerCreator.create_name(word_list, 0)
@@ -88,10 +94,16 @@ class ServerCreator:
             line = "from " + service_name_type0 + " import " + service_name_type1
             result_content += line + "\n"
         result_content += "\n"
-        result_content += server_class_content.format(ServerCreator.create_name([server_name, "Server"], 1))
+
+        server_name_list = []
+        server_name_list.extend(server_name.split())
+        server_name_list.append('server')
+        result_content += server_class_content.format(
+            ServerCreator.create_name(server_name_list, 1))
 
         for service in service_list:
             word_list = []
+            word_list.extend(server_name.split(" "))
             word_list.extend(service["service_name"].split(" "))
             word_list.append("service")
             service_name_type0 = ServerCreator.create_name(word_list, 0)
@@ -100,7 +112,7 @@ class ServerCreator:
             result_content += '        self.server.add_handler({}.func_handler)\n\n'.format(service_name_type0)
 
         result_content += "\n"
-        server_file_name = ServerCreator.create_name([server_name, "server"], 0) + ".py"
+        server_file_name = ServerCreator.create_name(self.server_name_list, 0) + ".py"
         with open(os.path.join(self.server_create_folder, server_file_name).replace("\\", "/"), "w") as f:
             f.write(result_content)
 
@@ -112,6 +124,7 @@ class ServerCreator:
             content = f.read()
             for service in service_list:
                 word_list = []
+                word_list.extend(server_name.split(" "))
                 word_list.extend(service["service_name"].split(" "))
                 word_list.append("service")
                 service_name_type0 = ServerCreator.create_name(word_list, 0)
@@ -161,21 +174,34 @@ if __name__ == '__main__':
     #         {"service_name": "register"},
     #     ]
     # })
-
-    # sc.load_config({
-    #     "server_name": "room",
-    #     "service_list": [
-    #         {"service_name": "enter room"},
-    #         {"service_name": "query room users"},
-    #         {"service_name": "query user belonged room"},
-    #     ]
-    # })
+    # sc.create()
 
     sc.load_config({
-        "server_name": "synchronization",
+        "server_name": "room mgr",
         "service_list": [
-            {"service_name": "synchronization query user transform"},
-            {"service_name": "synchronization report transform"},
+            # {"service_name": "enter room"},
+            # {"service_name": "query room users"},
+            # {"service_name": "query user belonged room"},
+            # {"service_name": "register a room"}
+            {"service_name": "exist room"}
         ]
     })
     sc.create()
+
+    # sc.load_config({
+    #     "server_name": "synchronization",
+    #     "service_list": [
+    #         {"service_name": "query user transform"},
+    #         {"service_name": "report transform"},
+    #     ]
+    # })
+    # sc.create()
+
+    # sc.load_config({
+    #     "server_name": "game mgr",
+    #     "service_list": [
+    #         {"service_name": "play alone"},
+    #         {"service_name": "play with others"}
+    #     ]
+    # })
+    # sc.create()

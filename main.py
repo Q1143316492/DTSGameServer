@@ -1,8 +1,9 @@
 # coding=utf-8
 from server_core.server import Server
-from server_impl.user_server import user_server
-from server_impl.room_server import room_server
 from server_impl.synchronization_server import synchronization_server
+from server_impl.room_mgr_server import room_mgr_server
+from server_impl.user_server import user_server
+from server_impl.game_mgr_server import game_mgr_server
 
 
 if __name__ == '__main__':
@@ -11,7 +12,8 @@ if __name__ == '__main__':
 
     # 加载 service
     user_server.UserServer(server)
-    room_server.RoomServer(server)
+    room_mgr_server.RoomMgrServer(server)
+    game_mgr_server.GameMgrServer(server)
     synchronization_server.SynchronizationServer(server)
 
     server.run()
