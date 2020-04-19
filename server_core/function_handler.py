@@ -40,7 +40,6 @@ class FunctionHandler:
     def run(self, controller, req, res):
         is_debug = config.ConfigLoader().get("debug")
         if isinstance(is_debug, bool) and is_debug:
-            self.logger.debug("debug mode...")
             self.call(controller, req, res)
         else:
             try:
@@ -51,23 +50,30 @@ class FunctionHandler:
                              + "\nreq.msg: " + str(req.msg)
                              + "err: " + e.message)
 
+    def inline_call_prepare(self, controller, req_dict):
+        req = Request()
+        req.content = req_dict
+        req.parse_success = True  # 内部调用 service，跳过了解析那一步，所以手动设置解析成功
+        res = Response()
+        if callable(self.pre_handler):
+            self.pre_handler(controller, req, res)
+        self.handler(controller, req, res)
+        if callable(self.last_handler):
+            self.last_handler(controller, req, res)
+        return res.content
+
     def inline_call(self, controller, req_dict):
+        is_debug = config.ConfigLoader().get("debug")
+        if isinstance(is_debug, bool) and is_debug:
+            return self.inline_call_prepare(controller, req_dict)
+
         try:
-            req = Request()
-            req.content = req_dict
-            req.parse_success = True    # 内部调用 service，跳过了解析那一步，所以手动设置解析成功
-            res = Response()
-            if callable(self.pre_handler):
-                self.pre_handler(controller, req, res)
-            self.handler(controller, req, res)
-            if callable(self.last_handler):
-                self.last_handler(controller, req, res)
-            return res.content
+            return self.inline_call_prepare(controller, req_dict)
         except Exception as e:
             logger = Log()
-            logger.error("[function_handler inline call] service error. handler " + str(self.handler_id))
-            logger.error("req.msg: " + str(req_dict))
-            logger.error("err: " + e.message)
+            logger.error("[function_handler inline call] service error. handler " + str(self.handler_id)
+                         + "req.msg: " + str(req_dict)
+                         + "err: " + e.message)
             return None
 
     @staticmethod

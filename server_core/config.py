@@ -54,6 +54,14 @@ SYNCHRONIZATION_REPORT_TRANSFORM_SERVICE = 1021
 
 GAME_MGR_PLAY_ALONE_SERVICE = 1030
 GAME_MGR_PLAY_WITH_OTHERS_SERVICE = 1031
+GAME_MGR_QUERY_MATCHING_RESULT_SERVICE = 1032
+
+# =====================================================================================================================
+
+GLOBAL_TOOLS = "GLOBAL_TOOLS#ASDKLJQWDNZXMC"
+GLOBAL_CACHE_TOOLS = "GLOBAL_CACHE#ASDJIQWLUJDJKS"
+GLOBAL_EVENT_TOOLS = "GLOBAL_EVENT#ASDQWEXCXZCLKJ"
+GLOBAL_FUNC_DICT = "GLOBAL_FUNC_DICT#ASDSDASDASDASD"
 
 # =====================================================================================================================
 

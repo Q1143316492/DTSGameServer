@@ -72,7 +72,6 @@ class Select(NetworkServerBase):
 
     def __update_exceptional(self):
         for s in self.exceptional:
-            print "__update_exceptional"
             self.inputs.remove(s)
             if s in self.socket_to_conn_id_dict.keys():
                 conn_id = self.socket_to_conn_id_dict[s]
@@ -85,8 +84,8 @@ class Select(NetworkServerBase):
         self.state = config.SERVER_RUN
         self.inputs.append(self.server_fd)
         while self.inputs:
-            self.readable, self.writable, self.exceptional = select.select(self.inputs, self.outputs, self.inputs)
+            self.readable, self.writable, self.exceptional = select.select(self.inputs, self.outputs, self.inputs, 0.1)
             self.__update_readable()
             self.__update_writable()
             self.__update_exceptional()
-            self.workers.message_consumer()
+            self.workers.update()

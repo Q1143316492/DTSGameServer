@@ -3,7 +3,7 @@ from server_core import config
 from server_core.connection import Connection
 from server_core.log import Log
 from server_core.message import Message
-import multiprocessing
+# import multiprocessing
 import Queue
 import uuid
 
@@ -71,7 +71,7 @@ class ConnectionPool:
             self._send_event(conn_id, msg)
         elif self.mode == config.SERVER_MODE_SELECT or self.mode == config.SERVER_MODE_EPOLL:
             if conn_id not in self.send_queue.keys():
-                self.send_queue[conn_id] = multiprocessing.Queue()
+                self.send_queue[conn_id] = Queue.Queue()
                 self.send_queue[conn_id].put(msg)
             else:
                 self.send_queue[conn_id].put(msg)

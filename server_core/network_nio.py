@@ -32,7 +32,7 @@ class LightServer(NetworkServerBase):
             # time.sleep(0.1)
             self.__accept_client()
             self.__update_client()
-            self.workers.message_consumer()
+            self.workers.update()
 
     def __accept_client(self):
         client_fd = None

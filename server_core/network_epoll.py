@@ -108,7 +108,7 @@ class Epoll(NetworkServerBase):
                         self.__update_readable(file_fd)
                     elif event & select.EPOLLOUT:
                         self.__update_writable(file_fd)
-                self.workers.message_consumer()
+                self.workers.update()
 
         except KeyboardInterrupt as e:
             # 这个信号是终端 ctrl + c 导致退出，测试环境 linux

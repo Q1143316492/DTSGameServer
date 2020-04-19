@@ -39,7 +39,7 @@ class Request:
         if content and isinstance(content, dict):
             self.content = content
         if not isinstance(self.content, dict):
-            raise ValueError("request/response content must be dict")
+            raise ValueError("request/response content must be dict. " + str(type(self.content)))
         self.content = unicode_convert(self.content)
         self.msg.pack_buffer(handler, json.dumps(self.content))
 
@@ -67,6 +67,19 @@ class Request:
             self.parse_err = "key: " + key + " is not str"
             return False
         return True
+
+    def check_contain_float(self, key):
+        if not self.contain_key(key):
+            return False
+        val = self.content[key]
+        try:
+            val = float(val)
+        except Exception as e:
+            self.parse_success = False
+            self.parse_err = "val: " + str(val) + "is not float. " + str(e)
+            return False
+        else:
+            return True
 
     def check_contain_int(self, key, min_val=None, max_val=None):
         if not self.contain_key(key):

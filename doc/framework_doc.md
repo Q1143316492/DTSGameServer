@@ -104,3 +104,22 @@ controller.handler_dict[需要调用的service id].inline_call(controller, {
 })
 ```
 本质是`inline_call`只调用了上面中间三个用户定义函数。
+
+
+
+## 00.3 延时事件的使用
+
+
+
+```python
+    controller.events.start_delay_event(DelayEvent(
+        config.GAME_MGR_PLAY_WITH_OTHERS_SERVICE,
+        {
+            "user_id": user_id,
+            "matching_time": matching_time,
+            "mode": mode
+        },
+        2	# 单位 秒 浮点数
+    ))
+```
+

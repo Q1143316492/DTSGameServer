@@ -11,7 +11,6 @@ class Message:
         head 消息头: 4字节 数值表示消息内容的长度
         handler 消息句柄: 4字节 数值表示接口编号，能够通过数值哈希到具体业务函数，该函数能够按序列化协议解析消息内容
         body 消息内容: ...
-        todo 包过长判断
     """
     DEFAULT_HEADER_SIZE = 4
     DEFAULT_HANDLER_SIZE = 4

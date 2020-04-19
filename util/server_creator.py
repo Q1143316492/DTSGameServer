@@ -176,17 +176,17 @@ if __name__ == '__main__':
     # })
     # sc.create()
 
-    sc.load_config({
-        "server_name": "room mgr",
-        "service_list": [
-            # {"service_name": "enter room"},
-            # {"service_name": "query room users"},
-            # {"service_name": "query user belonged room"},
-            # {"service_name": "register a room"}
-            {"service_name": "exist room"}
-        ]
-    })
-    sc.create()
+    # sc.load_config({
+    #     "server_name": "room mgr",
+    #     "service_list": [
+    #         # {"service_name": "enter room"},
+    #         # {"service_name": "query room users"},
+    #         # {"service_name": "query user belonged room"},
+    #         # {"service_name": "register a room"}
+    #         {"service_name": "exist room"}
+    #     ]
+    # })
+    # sc.create()
 
     # sc.load_config({
     #     "server_name": "synchronization",
@@ -197,11 +197,12 @@ if __name__ == '__main__':
     # })
     # sc.create()
 
-    # sc.load_config({
-    #     "server_name": "game mgr",
-    #     "service_list": [
-    #         {"service_name": "play alone"},
-    #         {"service_name": "play with others"}
-    #     ]
-    # })
-    # sc.create()
+    sc.load_config({
+        "server_name": "game mgr",
+        "service_list": [
+            # {"service_name": "play alone"},
+            # {"service_name": "play with others"}
+            {"service_name": "query matching result"}
+        ]
+    })
+    sc.create()

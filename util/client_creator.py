@@ -17,7 +17,7 @@ struct_content = """
 """
 
 function_content = """
-    public static void {0}({2})
+    public static void {0}Call({2})
     {{
         {0} request = new {0}
         {{
@@ -123,21 +123,52 @@ class ClientNetworkCreator:
         print class_content.format(self.class_name, content)
 
 
-if __name__ == '__main__':
+def game_mgr_creator():
     cc = ClientNetworkCreator()
+    # play alone service
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "play alone"
+    # })
+    # cc.load_request({
+    #     "user_id": "int"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string"
+    # })
+    # cc.create()
+    # play with others
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "play with others"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    #     "matching_time": "float",
+    #     "mode": "int"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string"
+    # })
+    # cc.create()
+    # query matching result
     cc.load_conf({
-        "class_name": "user",
-        "struct_name": "report transform"
+        "class_name": "game mgr",
+        "struct_name": "query matching result"
     })
     cc.load_request({
-        "username": "string",
-        "password": "string",
-        "time": "int"
+        "user_id": "int",
+        "player_count": "int",
     })
     cc.load_response({
         "ret": "int",
-        "login_success": "bool",
-        "user_id": "int",
-        "time": "int"
+        "err_msg": "string",
+        "room_id": "int"
     })
     cc.create()
+
+
+if __name__ == '__main__':
+    game_mgr_creator()
