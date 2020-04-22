@@ -10,7 +10,7 @@ import Queue
 
 class DelayEvent:
 
-    # delay 单位秒
+    # delay 单位秒 float
     def __init__(self, handler, req_dict, delay):
         self.handler = handler
         self.req_dict = req_dict

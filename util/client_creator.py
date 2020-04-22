@@ -170,5 +170,54 @@ def game_mgr_creator():
     cc.create()
 
 
+def sync_server_creator():
+    cc = ClientNetworkCreator()
+
+    # cc.load_conf({
+    #     "class_name": "user sync",
+    #     "struct_name": "heart beat"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    #     "mode": "int",
+    #     "time": "float",
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    # })
+
+    # ===============================================
+    cc.load_conf({
+        "class_name": "user sync",
+        "struct_name": "report action"
+    })
+    cc.load_request({
+        "user_id": "int",
+        "action": "string"
+    })
+    cc.load_response({
+        "ret": "int",
+        "err_msg": "string",
+    })
+    cc.create()
+    # ===============================================
+    cc.load_conf({
+        "class_name": "user sync",
+        "struct_name": "query action"
+    })
+    cc.load_request({
+        "user_id": "int",
+    })
+    cc.load_response({
+        "ret": "int",
+        "err_msg": "string",
+        "action": "string"
+    })
+    cc.create()
+
+
 if __name__ == '__main__':
-    game_mgr_creator()
+    # game_mgr_creator()
+
+    sync_server_creator()

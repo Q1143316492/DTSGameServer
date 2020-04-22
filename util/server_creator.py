@@ -188,21 +188,25 @@ if __name__ == '__main__':
     # })
     # sc.create()
 
-    # sc.load_config({
-    #     "server_name": "synchronization",
-    #     "service_list": [
-    #         {"service_name": "query user transform"},
-    #         {"service_name": "report transform"},
-    #     ]
-    # })
-    # sc.create()
-
     sc.load_config({
-        "server_name": "game mgr",
+        "server_name": "synchronization",
         "service_list": [
-            # {"service_name": "play alone"},
-            # {"service_name": "play with others"}
-            {"service_name": "query matching result"}
+            # {"service_name": "query user transform"},
+            # {"service_name": "report transform"},
+            # {"service_name": "heart beat"},
+            {"service_name": "report action"},
+            {"service_name": "query action"},
         ]
     })
     sc.create()
+
+    # sc.load_config({
+    #     "server_name": "game mgr",
+    #     "service_list": [
+    #         # {"service_name": "play alone"},
+    #         # {"service_name": "play with others"}
+    #         # {"service_name": "query matching result"}
+    #         {"service_name": "user out"}
+    #     ]
+    # })
+    # sc.create()

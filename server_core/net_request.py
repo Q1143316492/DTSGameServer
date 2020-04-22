@@ -39,7 +39,7 @@ class Request:
         if content and isinstance(content, dict):
             self.content = content
         if not isinstance(self.content, dict):
-            raise ValueError("request/response content must be dict. " + str(type(self.content)))
+            raise ValueError("request / response content must be dict. " + str(type(self.content)))
         self.content = unicode_convert(self.content)
         self.msg.pack_buffer(handler, json.dumps(self.content))
 
