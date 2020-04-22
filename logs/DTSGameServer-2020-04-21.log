@@ -1,0 +1,524 @@
+|2020-04-21_16-49-11|info| network mode select
+|2020-04-21_16-49-11|info| server established. port:7736
+|2020-04-21_16-49-11|info| add handler 1001
+|2020-04-21_16-49-11|info| add handler 1002
+|2020-04-21_16-49-11|info| add handler 1010
+|2020-04-21_16-49-11|info| add handler 1011
+|2020-04-21_16-49-11|info| add handler 1012
+|2020-04-21_16-49-11|info| add handler 1013
+|2020-04-21_16-49-11|info| add handler 1014
+|2020-04-21_16-49-11|info| add handler 1030
+|2020-04-21_16-49-11|info| add handler 1031
+|2020-04-21_16-49-11|info| add handler 1032
+|2020-04-21_16-49-11|info| add handler 1020
+|2020-04-21_16-49-11|info| add handler 1021
+|2020-04-21_16-49-11|info| add handler 1022
+|2020-04-21_16-49-11|info| add handler 1023
+|2020-04-21_16-49-11|info| add handler 1024
+|2020-04-21_16-49-11|info| worker pool. light mode
+|2020-04-21_16-49-11|info| work process start success
+|2020-04-21_19-43-48|info| network mode select
+|2020-04-21_19-43-48|info| server established. port:7736
+|2020-04-21_19-43-48|info| add handler 1001
+|2020-04-21_19-43-48|info| add handler 1002
+|2020-04-21_19-43-48|info| add handler 1010
+|2020-04-21_19-43-48|info| add handler 1011
+|2020-04-21_19-43-48|info| add handler 1012
+|2020-04-21_19-43-48|info| add handler 1013
+|2020-04-21_19-43-48|info| add handler 1014
+|2020-04-21_19-43-48|info| add handler 1030
+|2020-04-21_19-43-48|info| add handler 1031
+|2020-04-21_19-43-48|info| add handler 1032
+|2020-04-21_19-43-48|info| add handler 1020
+|2020-04-21_19-43-48|info| add handler 1021
+|2020-04-21_19-43-48|info| add handler 1022
+|2020-04-21_19-43-48|info| add handler 1023
+|2020-04-21_19-43-48|info| add handler 1024
+|2020-04-21_19-43-48|info| worker pool. light mode
+|2020-04-21_19-43-48|info| work process start success
+|2020-04-21_19-45-02|debug| new client. fd = <socket._socketobject object at 0x031FF848>port = 58999
+|2020-04-21_19-45-02|debug| connection count = 1
+|2020-04-21_19-45-02|debug| login service: [56][1001][{"username":"netease1","password":"123456","time":43582}]
+|2020-04-21_19-45-05|debug| new client. fd = <socket._socketobject object at 0x031FF7D8>port = 59002
+|2020-04-21_19-45-05|debug| connection count = 2
+|2020-04-21_19-45-05|debug| login service: [56][1001][{"username":"netease2","password":"123456","time":39495}]
+|2020-04-21_19-45-51|debug| client exit. fd = <socket._socketobject object at 0x031FF7D8>port = 59002
+|2020-04-21_19-51-01|debug| client exit. fd = <socket._socketobject object at 0x031FF848>port = 58999
+|2020-04-21_19-51-15|debug| new client. fd = <socket._socketobject object at 0x0320EEA0>port = 59234
+|2020-04-21_19-51-15|debug| connection count = 1
+|2020-04-21_19-51-15|debug| login service: [56][1001][{"username":"netease1","password":"123456","time":11491}]
+|2020-04-21_19-51-40|info| network mode select
+|2020-04-21_19-51-40|info| server established. port:7736
+|2020-04-21_19-51-40|info| add handler 1001
+|2020-04-21_19-51-40|info| add handler 1002
+|2020-04-21_19-51-40|info| add handler 1010
+|2020-04-21_19-51-40|info| add handler 1011
+|2020-04-21_19-51-40|info| add handler 1012
+|2020-04-21_19-51-40|info| add handler 1013
+|2020-04-21_19-51-40|info| add handler 1014
+|2020-04-21_19-51-40|info| add handler 1030
+|2020-04-21_19-51-40|info| add handler 1031
+|2020-04-21_19-51-40|info| add handler 1032
+|2020-04-21_19-51-40|info| add handler 1020
+|2020-04-21_19-51-40|info| add handler 1021
+|2020-04-21_19-51-40|info| add handler 1022
+|2020-04-21_19-51-40|info| add handler 1023
+|2020-04-21_19-51-40|info| add handler 1024
+|2020-04-21_19-51-40|info| worker pool. light mode
+|2020-04-21_19-51-40|info| work process start success
+|2020-04-21_19-52-15|debug| new client. fd = <socket._socketobject object at 0x02DDF848>port = 59269
+|2020-04-21_19-52-15|debug| connection count = 1
+|2020-04-21_19-52-15|debug| login service: [56][1001][{"username":"netease2","password":"123456","time":12165}]
+|2020-04-21_19-52-17|debug| new client. fd = <socket._socketobject object at 0x02DDF880>port = 59275
+|2020-04-21_19-52-17|debug| connection count = 2
+|2020-04-21_19-52-17|debug| login service: [56][1001][{"username":"netease1","password":"123456","time":21335}]
+|2020-04-21_19-53-24|debug| client exit. fd = <socket._socketobject object at 0x02DDF848>port = 59269
+|2020-04-21_19-53-24|debug| client exit. fd = <socket._socketobject object at 0x02DDF880>port = 59275
+|2020-04-21_19-53-41|info| network mode select
+|2020-04-21_19-53-41|info| server established. port:7736
+|2020-04-21_19-53-41|info| add handler 1001
+|2020-04-21_19-53-41|info| add handler 1002
+|2020-04-21_19-53-41|info| add handler 1010
+|2020-04-21_19-53-41|info| add handler 1011
+|2020-04-21_19-53-41|info| add handler 1012
+|2020-04-21_19-53-41|info| add handler 1013
+|2020-04-21_19-53-41|info| add handler 1014
+|2020-04-21_19-53-41|info| add handler 1030
+|2020-04-21_19-53-41|info| add handler 1031
+|2020-04-21_19-53-41|info| add handler 1032
+|2020-04-21_19-53-41|info| add handler 1020
+|2020-04-21_19-53-41|info| add handler 1021
+|2020-04-21_19-53-41|info| add handler 1022
+|2020-04-21_19-53-41|info| add handler 1023
+|2020-04-21_19-53-41|info| add handler 1024
+|2020-04-21_19-53-41|info| worker pool. light mode
+|2020-04-21_19-53-41|info| work process start success
+|2020-04-21_19-54-04|debug| new client. fd = <socket._socketobject object at 0x0312F848>port = 59322
+|2020-04-21_19-54-04|debug| connection count = 1
+|2020-04-21_19-54-04|debug| login service: [56][1001][{"username":"netease2","password":"123456","time":10479}]
+|2020-04-21_19-54-06|debug| new client. fd = <socket._socketobject object at 0x0312F7D8>port = 59325
+|2020-04-21_19-54-06|debug| connection count = 2
+|2020-04-21_19-54-06|debug| login service: [56][1001][{"username":"netease1","password":"123456","time":15701}]
+|2020-04-21_19-54-48|debug| client exit. fd = <socket._socketobject object at 0x0312F848>port = 59322
+|2020-04-21_19-54-48|debug| client exit. fd = <socket._socketobject object at 0x0312F7D8>port = 59325
+|2020-04-21_19-54-54|info| network mode light server
+|2020-04-21_19-54-54|info| server established. port:7736
+|2020-04-21_19-54-54|info| add handler 1001
+|2020-04-21_19-54-54|info| add handler 1002
+|2020-04-21_19-54-54|info| add handler 1010
+|2020-04-21_19-54-54|info| add handler 1011
+|2020-04-21_19-54-54|info| add handler 1012
+|2020-04-21_19-54-54|info| add handler 1013
+|2020-04-21_19-54-54|info| add handler 1014
+|2020-04-21_19-54-54|info| add handler 1030
+|2020-04-21_19-54-54|info| add handler 1031
+|2020-04-21_19-54-54|info| add handler 1032
+|2020-04-21_19-54-54|info| add handler 1020
+|2020-04-21_19-54-54|info| add handler 1021
+|2020-04-21_19-54-54|info| add handler 1022
+|2020-04-21_19-54-54|info| add handler 1023
+|2020-04-21_19-54-54|info| add handler 1024
+|2020-04-21_19-54-54|info| worker pool. light mode
+|2020-04-21_19-54-54|info| work process start success
+|2020-04-21_19-55-13|debug| new client. fd = <socket._socketobject object at 0x0350F8B8>port = 59359
+|2020-04-21_19-55-13|debug| connection count = 1
+|2020-04-21_19-55-13|debug| login service: [56][1001][{"username":"netease2","password":"123456","time":10293}]
+|2020-04-21_19-55-15|debug| new client. fd = <socket._socketobject object at 0x0350FA40>port = 59363
+|2020-04-21_19-55-15|debug| connection count = 2
+|2020-04-21_19-55-15|debug| login service: [56][1001][{"username":"netease1","password":"123456","time":13721}]
+|2020-04-21_19-55-25|debug| client exit. fd = <socket._socketobject object at 0x0350F8B8>port = 59359
+|2020-04-21_22-09-04|info| network mode light server
+|2020-04-21_22-09-04|info| server established. port:7736
+|2020-04-21_22-09-04|info| add handler 1001
+|2020-04-21_22-09-04|info| add handler 1002
+|2020-04-21_22-09-04|info| add handler 1010
+|2020-04-21_22-09-04|info| add handler 1011
+|2020-04-21_22-09-04|info| add handler 1012
+|2020-04-21_22-09-04|info| add handler 1013
+|2020-04-21_22-09-04|info| add handler 1014
+|2020-04-21_22-09-04|info| add handler 1030
+|2020-04-21_22-09-04|info| add handler 1031
+|2020-04-21_22-09-04|info| add handler 1032
+|2020-04-21_22-09-04|info| add handler 1020
+|2020-04-21_22-09-04|info| add handler 1021
+|2020-04-21_22-09-04|info| add handler 1022
+|2020-04-21_22-09-04|info| add handler 1023
+|2020-04-21_22-09-04|info| add handler 1024
+|2020-04-21_22-09-04|info| worker pool. light mode
+|2020-04-21_22-09-04|info| work process start success
+|2020-04-21_22-09-16|debug| new client. fd = <socket._socketobject object at 0x02F6C880>port = 63444
+|2020-04-21_22-09-16|debug| connection count = 1
+|2020-04-21_22-09-16|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":6122}]
+|2020-04-21_22-13-02|info| network mode light server
+|2020-04-21_22-13-02|info| server established. port:7736
+|2020-04-21_22-13-02|info| add handler 1001
+|2020-04-21_22-13-02|info| add handler 1002
+|2020-04-21_22-13-02|info| add handler 1010
+|2020-04-21_22-13-02|info| add handler 1011
+|2020-04-21_22-13-02|info| add handler 1012
+|2020-04-21_22-13-02|info| add handler 1013
+|2020-04-21_22-13-02|info| add handler 1014
+|2020-04-21_22-13-02|info| add handler 1030
+|2020-04-21_22-13-02|info| add handler 1031
+|2020-04-21_22-13-02|info| add handler 1032
+|2020-04-21_22-13-02|info| add handler 1020
+|2020-04-21_22-13-02|info| add handler 1021
+|2020-04-21_22-13-02|info| add handler 1022
+|2020-04-21_22-13-02|info| add handler 1023
+|2020-04-21_22-13-02|info| add handler 1024
+|2020-04-21_22-13-02|info| worker pool. light mode
+|2020-04-21_22-13-02|info| work process start success
+|2020-04-21_22-13-13|debug| new client. fd = <socket._socketobject object at 0x02C7F880>port = 63546
+|2020-04-21_22-13-13|debug| connection count = 1
+|2020-04-21_22-13-13|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5579}]
+|2020-04-21_22-15-09|info| network mode light server
+|2020-04-21_22-15-09|info| server established. port:7736
+|2020-04-21_22-15-09|info| add handler 1001
+|2020-04-21_22-15-09|info| add handler 1002
+|2020-04-21_22-15-09|info| add handler 1010
+|2020-04-21_22-15-09|info| add handler 1011
+|2020-04-21_22-15-09|info| add handler 1012
+|2020-04-21_22-15-09|info| add handler 1013
+|2020-04-21_22-15-09|info| add handler 1014
+|2020-04-21_22-15-10|info| add handler 1030
+|2020-04-21_22-15-10|info| add handler 1031
+|2020-04-21_22-15-10|info| add handler 1032
+|2020-04-21_22-15-10|info| add handler 1020
+|2020-04-21_22-15-10|info| add handler 1021
+|2020-04-21_22-15-10|info| add handler 1022
+|2020-04-21_22-15-10|info| add handler 1023
+|2020-04-21_22-15-10|info| add handler 1024
+|2020-04-21_22-15-10|info| worker pool. light mode
+|2020-04-21_22-15-10|info| work process start success
+|2020-04-21_22-15-22|debug| new client. fd = <socket._socketobject object at 0x02ECE880>port = 63622
+|2020-04-21_22-15-22|debug| connection count = 1
+|2020-04-21_22-15-22|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":7916}]
+|2020-04-21_22-26-01|info| network mode light server
+|2020-04-21_22-26-01|info| server established. port:7736
+|2020-04-21_22-26-01|info| add handler 1001
+|2020-04-21_22-26-01|info| add handler 1002
+|2020-04-21_22-26-01|info| add handler 1010
+|2020-04-21_22-26-01|info| add handler 1011
+|2020-04-21_22-26-01|info| add handler 1012
+|2020-04-21_22-26-01|info| add handler 1013
+|2020-04-21_22-26-01|info| add handler 1014
+|2020-04-21_22-26-01|info| add handler 1030
+|2020-04-21_22-26-01|info| add handler 1031
+|2020-04-21_22-26-01|info| add handler 1032
+|2020-04-21_22-26-01|info| add handler 1020
+|2020-04-21_22-26-01|info| add handler 1021
+|2020-04-21_22-26-01|info| add handler 1022
+|2020-04-21_22-26-01|info| add handler 1023
+|2020-04-21_22-26-01|info| add handler 1024
+|2020-04-21_22-26-01|info| worker pool. light mode
+|2020-04-21_22-26-01|info| work process start success
+|2020-04-21_22-26-11|debug| new client. fd = <socket._socketobject object at 0x02BCF880>port = 63913
+|2020-04-21_22-26-11|debug| connection count = 1
+|2020-04-21_22-26-11|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5535}]
+|2020-04-21_22-27-54|debug| client exit. fd = <socket._socketobject object at 0x02BCF880>port = 63913
+|2020-04-21_22-28-05|debug| new client. fd = <socket._socketobject object at 0x02BCF880>port = 63962
+|2020-04-21_22-28-05|debug| connection count = 1
+|2020-04-21_22-28-05|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":8981}]
+|2020-04-21_22-29-41|debug| client exit. fd = <socket._socketobject object at 0x02BCF880>port = 63962
+|2020-04-21_22-29-49|debug| new client. fd = <socket._socketobject object at 0x02BCF880>port = 64012
+|2020-04-21_22-29-49|debug| connection count = 1
+|2020-04-21_22-29-49|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5736}]
+|2020-04-21_22-30-00|info| network mode light server
+|2020-04-21_22-30-00|info| server established. port:7736
+|2020-04-21_22-30-00|info| add handler 1001
+|2020-04-21_22-30-00|info| add handler 1002
+|2020-04-21_22-30-00|info| add handler 1010
+|2020-04-21_22-30-00|info| add handler 1011
+|2020-04-21_22-30-00|info| add handler 1012
+|2020-04-21_22-30-00|info| add handler 1013
+|2020-04-21_22-30-00|info| add handler 1014
+|2020-04-21_22-30-00|info| add handler 1030
+|2020-04-21_22-30-00|info| add handler 1031
+|2020-04-21_22-30-00|info| add handler 1032
+|2020-04-21_22-30-00|info| add handler 1020
+|2020-04-21_22-30-00|info| add handler 1021
+|2020-04-21_22-30-00|info| add handler 1022
+|2020-04-21_22-30-00|info| add handler 1023
+|2020-04-21_22-30-00|info| add handler 1024
+|2020-04-21_22-30-00|info| worker pool. light mode
+|2020-04-21_22-30-00|info| work process start success
+|2020-04-21_22-30-12|debug| new client. fd = <socket._socketobject object at 0x02AEF880>port = 64028
+|2020-04-21_22-30-12|debug| connection count = 1
+|2020-04-21_22-30-12|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5740}]
+|2020-04-21_22-38-10|info| network mode light server
+|2020-04-21_22-38-10|info| server established. port:7736
+|2020-04-21_22-38-10|info| add handler 1001
+|2020-04-21_22-38-10|info| add handler 1002
+|2020-04-21_22-38-10|info| add handler 1010
+|2020-04-21_22-38-10|info| add handler 1011
+|2020-04-21_22-38-10|info| add handler 1012
+|2020-04-21_22-38-10|info| add handler 1013
+|2020-04-21_22-38-10|info| add handler 1014
+|2020-04-21_22-38-10|info| add handler 1030
+|2020-04-21_22-38-10|info| add handler 1031
+|2020-04-21_22-38-10|info| add handler 1032
+|2020-04-21_22-38-10|info| add handler 1020
+|2020-04-21_22-38-10|info| add handler 1021
+|2020-04-21_22-38-10|info| add handler 1022
+|2020-04-21_22-38-10|info| add handler 1023
+|2020-04-21_22-38-10|info| add handler 1024
+|2020-04-21_22-38-10|info| worker pool. light mode
+|2020-04-21_22-38-10|info| work process start success
+|2020-04-21_22-38-41|debug| new client. fd = <socket._socketobject object at 0x039DF880>port = 64987
+|2020-04-21_22-38-41|debug| connection count = 1
+|2020-04-21_22-38-41|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5727}]
+|2020-04-21_22-40-08|info| network mode light server
+|2020-04-21_22-40-08|info| server established. port:7736
+|2020-04-21_22-40-08|info| add handler 1001
+|2020-04-21_22-40-08|info| add handler 1002
+|2020-04-21_22-40-08|info| add handler 1010
+|2020-04-21_22-40-08|info| add handler 1011
+|2020-04-21_22-40-08|info| add handler 1012
+|2020-04-21_22-40-08|info| add handler 1013
+|2020-04-21_22-40-08|info| add handler 1014
+|2020-04-21_22-40-08|info| add handler 1030
+|2020-04-21_22-40-08|info| add handler 1031
+|2020-04-21_22-40-08|info| add handler 1032
+|2020-04-21_22-40-08|info| add handler 1020
+|2020-04-21_22-40-08|info| add handler 1021
+|2020-04-21_22-40-08|info| add handler 1022
+|2020-04-21_22-40-08|info| add handler 1023
+|2020-04-21_22-40-08|info| add handler 1024
+|2020-04-21_22-40-08|info| worker pool. light mode
+|2020-04-21_22-40-08|info| work process start success
+|2020-04-21_22-40-20|debug| new client. fd = <socket._socketobject object at 0x02E5E880>port = 65048
+|2020-04-21_22-40-20|debug| connection count = 1
+|2020-04-21_22-40-20|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5377}]
+|2020-04-21_22-41-24|info| network mode light server
+|2020-04-21_22-41-24|info| server established. port:7736
+|2020-04-21_22-41-24|info| add handler 1001
+|2020-04-21_22-41-24|info| add handler 1002
+|2020-04-21_22-41-24|info| add handler 1010
+|2020-04-21_22-41-24|info| add handler 1011
+|2020-04-21_22-41-24|info| add handler 1012
+|2020-04-21_22-41-24|info| add handler 1013
+|2020-04-21_22-41-24|info| add handler 1014
+|2020-04-21_22-41-24|info| add handler 1030
+|2020-04-21_22-41-24|info| add handler 1031
+|2020-04-21_22-41-24|info| add handler 1032
+|2020-04-21_22-41-24|info| add handler 1020
+|2020-04-21_22-41-24|info| add handler 1021
+|2020-04-21_22-41-24|info| add handler 1022
+|2020-04-21_22-41-24|info| add handler 1023
+|2020-04-21_22-41-24|info| add handler 1024
+|2020-04-21_22-41-24|info| worker pool. light mode
+|2020-04-21_22-41-24|info| work process start success
+|2020-04-21_22-41-35|debug| new client. fd = <socket._socketobject object at 0x02DEF880>port = 65094
+|2020-04-21_22-41-35|debug| connection count = 1
+|2020-04-21_22-41-35|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5300}]
+|2020-04-21_22-43-35|info| network mode light server
+|2020-04-21_22-43-35|info| server established. port:7736
+|2020-04-21_22-43-35|info| add handler 1001
+|2020-04-21_22-43-35|info| add handler 1002
+|2020-04-21_22-43-35|info| add handler 1010
+|2020-04-21_22-43-35|info| add handler 1011
+|2020-04-21_22-43-35|info| add handler 1012
+|2020-04-21_22-43-35|info| add handler 1013
+|2020-04-21_22-43-35|info| add handler 1014
+|2020-04-21_22-43-35|info| add handler 1030
+|2020-04-21_22-43-35|info| add handler 1031
+|2020-04-21_22-43-35|info| add handler 1032
+|2020-04-21_22-43-35|info| add handler 1020
+|2020-04-21_22-43-35|info| add handler 1021
+|2020-04-21_22-43-35|info| add handler 1022
+|2020-04-21_22-43-35|info| add handler 1023
+|2020-04-21_22-43-35|info| add handler 1024
+|2020-04-21_22-43-35|info| worker pool. light mode
+|2020-04-21_22-43-35|info| work process start success
+|2020-04-21_22-43-38|debug| new client. fd = <socket._socketobject object at 0x0301E7A0>port = 65187
+|2020-04-21_22-43-38|debug| connection count = 1
+|2020-04-21_22-43-38|warn| system_aftertreatment err. request / response content must be dict. <type 'NoneType'> req [36][1022][{"user_id": 1, "mode": 1, "time": 2}]
+|2020-04-21_22-43-38|debug| client exit. fd = <socket._socketobject object at 0x0301E7A0>port = 65187
+|2020-04-21_22-44-18|info| network mode light server
+|2020-04-21_22-44-18|info| server established. port:7736
+|2020-04-21_22-44-18|info| add handler 1001
+|2020-04-21_22-44-18|info| add handler 1002
+|2020-04-21_22-44-18|info| add handler 1010
+|2020-04-21_22-44-18|info| add handler 1011
+|2020-04-21_22-44-18|info| add handler 1012
+|2020-04-21_22-44-18|info| add handler 1013
+|2020-04-21_22-44-18|info| add handler 1014
+|2020-04-21_22-44-18|info| add handler 1030
+|2020-04-21_22-44-18|info| add handler 1031
+|2020-04-21_22-44-18|info| add handler 1032
+|2020-04-21_22-44-18|info| add handler 1020
+|2020-04-21_22-44-18|info| add handler 1021
+|2020-04-21_22-44-18|info| add handler 1022
+|2020-04-21_22-44-18|info| add handler 1023
+|2020-04-21_22-44-18|info| add handler 1024
+|2020-04-21_22-44-18|info| worker pool. light mode
+|2020-04-21_22-44-18|info| work process start success
+|2020-04-21_22-44-21|debug| new client. fd = <socket._socketobject object at 0x0307F7A0>port = 65220
+|2020-04-21_22-44-21|debug| connection count = 1
+|2020-04-21_22-44-21|debug| client exit. fd = <socket._socketobject object at 0x0307F7A0>port = 65220
+|2020-04-21_22-44-40|info| network mode light server
+|2020-04-21_22-44-40|info| server established. port:7736
+|2020-04-21_22-44-40|info| add handler 1001
+|2020-04-21_22-44-40|info| add handler 1002
+|2020-04-21_22-44-40|info| add handler 1010
+|2020-04-21_22-44-40|info| add handler 1011
+|2020-04-21_22-44-40|info| add handler 1012
+|2020-04-21_22-44-40|info| add handler 1013
+|2020-04-21_22-44-40|info| add handler 1014
+|2020-04-21_22-44-40|info| add handler 1030
+|2020-04-21_22-44-40|info| add handler 1031
+|2020-04-21_22-44-40|info| add handler 1032
+|2020-04-21_22-44-40|info| add handler 1020
+|2020-04-21_22-44-40|info| add handler 1021
+|2020-04-21_22-44-40|info| add handler 1022
+|2020-04-21_22-44-40|info| add handler 1023
+|2020-04-21_22-44-40|info| add handler 1024
+|2020-04-21_22-44-40|info| worker pool. light mode
+|2020-04-21_22-44-40|info| work process start success
+|2020-04-21_22-44-43|debug| new client. fd = <socket._socketobject object at 0x038BE7A0>port = 65235
+|2020-04-21_22-44-43|debug| connection count = 1
+|2020-04-21_22-44-43|debug| client exit. fd = <socket._socketobject object at 0x038BE7A0>port = 65235
+|2020-04-21_22-46-33|info| network mode light server
+|2020-04-21_22-46-33|info| server established. port:7736
+|2020-04-21_22-46-33|info| add handler 1001
+|2020-04-21_22-46-33|info| add handler 1002
+|2020-04-21_22-46-33|info| add handler 1010
+|2020-04-21_22-46-33|info| add handler 1011
+|2020-04-21_22-46-33|info| add handler 1012
+|2020-04-21_22-46-33|info| add handler 1013
+|2020-04-21_22-46-33|info| add handler 1014
+|2020-04-21_22-46-33|info| add handler 1030
+|2020-04-21_22-46-33|info| add handler 1031
+|2020-04-21_22-46-33|info| add handler 1032
+|2020-04-21_22-46-33|info| add handler 1020
+|2020-04-21_22-46-33|info| add handler 1021
+|2020-04-21_22-46-33|info| add handler 1022
+|2020-04-21_22-46-33|info| add handler 1023
+|2020-04-21_22-46-33|info| add handler 1024
+|2020-04-21_22-46-33|info| worker pool. light mode
+|2020-04-21_22-46-33|info| work process start success
+|2020-04-21_22-46-49|debug| new client. fd = <socket._socketobject object at 0x035DE848>port = 65363
+|2020-04-21_22-46-49|debug| connection count = 1
+|2020-04-21_22-46-49|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5645}]
+|2020-04-21_22-48-05|info| network mode light server
+|2020-04-21_22-48-05|info| server established. port:7736
+|2020-04-21_22-48-05|info| add handler 1001
+|2020-04-21_22-48-05|info| add handler 1002
+|2020-04-21_22-48-05|info| add handler 1010
+|2020-04-21_22-48-05|info| add handler 1011
+|2020-04-21_22-48-05|info| add handler 1012
+|2020-04-21_22-48-05|info| add handler 1013
+|2020-04-21_22-48-05|info| add handler 1014
+|2020-04-21_22-48-05|info| add handler 1030
+|2020-04-21_22-48-05|info| add handler 1031
+|2020-04-21_22-48-05|info| add handler 1032
+|2020-04-21_22-48-05|info| add handler 1020
+|2020-04-21_22-48-05|info| add handler 1021
+|2020-04-21_22-48-05|info| add handler 1022
+|2020-04-21_22-48-05|info| add handler 1023
+|2020-04-21_22-48-05|info| add handler 1024
+|2020-04-21_22-48-05|info| worker pool. light mode
+|2020-04-21_22-48-05|info| work process start success
+|2020-04-21_22-48-16|debug| new client. fd = <socket._socketobject object at 0x0335F848>port = 65420
+|2020-04-21_22-48-16|debug| connection count = 1
+|2020-04-21_22-48-16|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5744}]
+|2020-04-21_22-49-07|debug| client exit. fd = <socket._socketobject object at 0x0335F848>port = 65420
+|2020-04-21_22-49-15|debug| new client. fd = <socket._socketobject object at 0x0335F848>port = 65451
+|2020-04-21_22-49-15|debug| connection count = 1
+|2020-04-21_22-49-15|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5760}]
+|2020-04-21_22-49-23|info| network mode light server
+|2020-04-21_22-49-23|info| server established. port:7736
+|2020-04-21_22-49-23|info| add handler 1001
+|2020-04-21_22-49-23|info| add handler 1002
+|2020-04-21_22-49-23|info| add handler 1010
+|2020-04-21_22-49-23|info| add handler 1011
+|2020-04-21_22-49-23|info| add handler 1012
+|2020-04-21_22-49-23|info| add handler 1013
+|2020-04-21_22-49-23|info| add handler 1014
+|2020-04-21_22-49-23|info| add handler 1030
+|2020-04-21_22-49-23|info| add handler 1031
+|2020-04-21_22-49-23|info| add handler 1032
+|2020-04-21_22-49-23|info| add handler 1020
+|2020-04-21_22-49-23|info| add handler 1021
+|2020-04-21_22-49-23|info| add handler 1022
+|2020-04-21_22-49-23|info| add handler 1023
+|2020-04-21_22-49-23|info| add handler 1024
+|2020-04-21_22-49-23|info| worker pool. light mode
+|2020-04-21_22-49-23|info| work process start success
+|2020-04-21_22-49-34|debug| new client. fd = <socket._socketobject object at 0x0359F848>port = 65475
+|2020-04-21_22-49-34|debug| connection count = 1
+|2020-04-21_22-49-34|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5114}]
+|2020-04-21_22-51-15|debug| client exit. fd = <socket._socketobject object at 0x0359F848>port = 65475
+|2020-04-21_22-51-23|debug| new client. fd = <socket._socketobject object at 0x0359F848>port = 49163
+|2020-04-21_22-51-23|debug| connection count = 1
+|2020-04-21_22-51-23|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5813}]
+|2020-04-21_22-52-25|debug| client exit. fd = <socket._socketobject object at 0x0359F848>port = 49163
+|2020-04-21_22-52-34|debug| new client. fd = <socket._socketobject object at 0x0359F848>port = 49199
+|2020-04-21_22-52-34|debug| connection count = 1
+|2020-04-21_22-52-34|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":5513}]
+|2020-04-21_22-53-07|info| network mode light server
+|2020-04-21_22-53-07|info| server established. port:7736
+|2020-04-21_22-53-07|info| add handler 1001
+|2020-04-21_22-53-07|info| add handler 1002
+|2020-04-21_22-53-07|info| add handler 1010
+|2020-04-21_22-53-07|info| add handler 1011
+|2020-04-21_22-53-07|info| add handler 1012
+|2020-04-21_22-53-07|info| add handler 1013
+|2020-04-21_22-53-07|info| add handler 1014
+|2020-04-21_22-53-07|info| add handler 1030
+|2020-04-21_22-53-07|info| add handler 1031
+|2020-04-21_22-53-07|info| add handler 1032
+|2020-04-21_22-53-07|info| add handler 1020
+|2020-04-21_22-53-07|info| add handler 1021
+|2020-04-21_22-53-07|info| add handler 1022
+|2020-04-21_22-53-07|info| add handler 1023
+|2020-04-21_22-53-07|info| add handler 1024
+|2020-04-21_22-53-07|info| worker pool. light mode
+|2020-04-21_22-53-07|info| work process start success
+|2020-04-21_22-53-21|debug| new client. fd = <socket._socketobject object at 0x02ADE848>port = 49233
+|2020-04-21_22-53-21|debug| connection count = 1
+|2020-04-21_22-53-21|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":6242}]
+|2020-04-21_22-54-25|info| network mode light server
+|2020-04-21_22-54-25|info| server established. port:7736
+|2020-04-21_22-54-25|info| add handler 1001
+|2020-04-21_22-54-25|info| add handler 1002
+|2020-04-21_22-54-25|info| add handler 1010
+|2020-04-21_22-54-25|info| add handler 1011
+|2020-04-21_22-54-25|info| add handler 1012
+|2020-04-21_22-54-25|info| add handler 1013
+|2020-04-21_22-54-25|info| add handler 1014
+|2020-04-21_22-54-25|info| add handler 1030
+|2020-04-21_22-54-25|info| add handler 1031
+|2020-04-21_22-54-25|info| add handler 1032
+|2020-04-21_22-54-25|info| add handler 1020
+|2020-04-21_22-54-25|info| add handler 1021
+|2020-04-21_22-54-25|info| add handler 1022
+|2020-04-21_22-54-25|info| add handler 1023
+|2020-04-21_22-54-25|info| add handler 1024
+|2020-04-21_22-54-25|info| worker pool. light mode
+|2020-04-21_22-54-25|info| work process start success
+|2020-04-21_22-54-39|debug| new client. fd = <socket._socketobject object at 0x029EE848>port = 49275
+|2020-04-21_22-54-39|debug| connection count = 1
+|2020-04-21_22-54-39|debug| login service: [56][1001][{"username":"netease1","password":"123456","time":14618}]
+|2020-04-21_22-55-07|info| network mode light server
+|2020-04-21_22-55-07|info| server established. port:7736
+|2020-04-21_22-55-07|info| add handler 1001
+|2020-04-21_22-55-07|info| add handler 1002
+|2020-04-21_22-55-07|info| add handler 1010
+|2020-04-21_22-55-07|info| add handler 1011
+|2020-04-21_22-55-07|info| add handler 1012
+|2020-04-21_22-55-08|info| add handler 1013
+|2020-04-21_22-55-08|info| add handler 1014
+|2020-04-21_22-55-08|info| add handler 1030
+|2020-04-21_22-55-08|info| add handler 1031
+|2020-04-21_22-55-08|info| add handler 1032
+|2020-04-21_22-55-08|info| add handler 1020
+|2020-04-21_22-55-08|info| add handler 1021
+|2020-04-21_22-55-08|info| add handler 1022
+|2020-04-21_22-55-08|info| add handler 1023
+|2020-04-21_22-55-08|info| add handler 1024
+|2020-04-21_22-55-08|info| worker pool. light mode
+|2020-04-21_22-55-08|info| work process start success
+|2020-04-21_22-55-15|debug| new client. fd = <socket._socketobject object at 0x038FC848>port = 49297
+|2020-04-21_22-55-15|debug| connection count = 1
+|2020-04-21_22-55-15|debug| login service: [55][1001][{"username":"netease1","password":"123456","time":6071}]
