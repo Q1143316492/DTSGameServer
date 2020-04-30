@@ -27,6 +27,7 @@ def game_mgr_play_with_others_service_run(controller, req, res):
         game_mgr.start_match(user_id, matching_time)
     elif mode == 2:     # 结束匹配, 可能是客户端点的取消
         game_mgr.stop_match(user_id)
+        ret = -1
     else:
         ret = -1
         err_msg = "mode not find"

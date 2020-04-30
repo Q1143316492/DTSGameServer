@@ -16,26 +16,25 @@ def synchronization_query_user_transform_service_run(controller, req, res):
         Log().warn("service %d req parse err %s" % (config.SYNCHRONIZATION_QUERY_USER_TRANSFORM_SERVICE, req.parse_err))
         return
 
-    user_id = str(req.content["user_id"])
+    user_id = req.content["user_id"]
     req_time = req.content["time"]
     err_msg = ""
-    position = ""
-    rotation = ""
     ret = 0
 
     # 处理业务
-    key = ckv.get_ckv_report_transform(user_id)
-    with controller.mem_cache.lock(key):
-        pos_and_rot = controller.mem_cache.get(key)
-        if pos_and_rot is not None:
-            position, rotation = pos_and_rot.split("#")
-        else:
-            ret = -1
-            err_msg = "key not exist"
 
-    # print "qweqweqwe" + str(res.content)
+    user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
+    position, rotation = user_runtime.role.get_transform()
+
+    if position is None or rotation is None:
+        ret = -1
+        err_msg = "key not exist"
+        position = ''
+        rotation = ''
+
     res.content = {
         "ret": ret,
+        "user_id": user_id,
         "position": position,
         "rotation": rotation,
         "err_msg": err_msg,

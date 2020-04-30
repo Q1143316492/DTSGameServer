@@ -13,11 +13,13 @@ class LockHandler:
         self.is_lock = False
 
     def __enter__(self):
-        self.is_lock = self.cache.lock_key(self.key)
+        pass
+        # self.is_lock = self.cache.lock_key(self.key)
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        if self.is_lock:
-            self.cache.unlock_key(self.key)
+        pass
+        # if self.is_lock:
+        #     self.cache.unlock_key(self.key)
 
 
 class MemCache(object):

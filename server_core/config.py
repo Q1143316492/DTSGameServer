@@ -58,6 +58,7 @@ SYNCHRONIZATION_QUERY_ACTION_SERVICE = 1024
 GAME_MGR_PLAY_ALONE_SERVICE = 1030
 GAME_MGR_PLAY_WITH_OTHERS_SERVICE = 1031
 GAME_MGR_QUERY_MATCHING_RESULT_SERVICE = 1032
+GAME_MGR_PLAYER_EVENT_SERVICE = 1033
 
 # =====================================================================================================================
 

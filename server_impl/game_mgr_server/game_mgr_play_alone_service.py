@@ -16,6 +16,7 @@ def game_mgr_play_alone_service_run(controller, req, res):
     user_id = str(req.content["user_id"])
     ret = 0
     err_msg = ''
+    room_id = -1
 
     res_dict = controller.handler_dict[config.ROOM_MGR_ENTER_ROOM_SERVICE].inline_call(controller, {
         "user_id": user_id,
@@ -25,10 +26,13 @@ def game_mgr_play_alone_service_run(controller, req, res):
     if res_dict["ret"] != 0:
         ret = res_dict["ret"]
         err_msg = "ROOM_MGR_ENTER_ROOM_SERVICE error: " + res_dict["err_msg"]
+    else:
+        room_id = res_dict["room_id"]
 
     res.content = {
         "ret": ret,
-        "err_msg": err_msg
+        "err_msg": err_msg,
+        "room_id": room_id
     }
 
 

@@ -93,3 +93,8 @@ class Connection:
     def send_event(self):
         if isinstance(self.send_buf, str):
             self.client_fd.sendall(self.send_buf)
+
+
+if __name__ == '__main__':
+    a = [0 for i in range(5)]
+    print a

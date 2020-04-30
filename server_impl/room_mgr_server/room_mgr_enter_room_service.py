@@ -2,8 +2,11 @@
 from server_core.function_handler import FunctionHandler
 from server_core.log import Log
 from server_core import config
+from server_impl.base.sync_mgr import frame_sync
 from server_impl.server_config import ckv
-from server_impl.base.room_mgr import game_room
+from server_impl.base.room_mgr import game_room, room_mgr
+from server_impl.base.game_mgr import game_mgr
+from server_impl.base.user_mgr import user_mgr
 
 
 """
@@ -64,26 +67,17 @@ def room_mgr_enter_room_service_run(controller, req, res):
         }
         return
 
-    game_room.out_of_last_room(controller, res, user_id)
+    game_room.out_of_last_room(controller, user_id)
 
-    # 设置下当前玩家所在的房间的 kv
-    controller.mem_cache.set(ckv.get_ckv_user_enter_room(user_id), "{}#{}".format(room_type, room_id))
+    user_runtime = game_mgr.init_user_runtime(controller, user_id)
+    user_runtime.set_room(room_type=room_type, room_id=room_id)
+    user_runtime.restart()
 
-    # 在查询某个房间下有哪些玩家的 缓存 加上当前玩家
-    key = ckv.get_ckv_query_room_users(room_id)
-    with controller.mem_cache.lock(key):
-        users = controller.mem_cache.get(key)
-        if users is None:
-            controller.mem_cache.set(key, user_id)
-        else:
-            user_id_list = users.split(";")
-            if user_id not in user_id_list:
-                user_id_list.append(user_id)
-                controller.mem_cache.set(key, ";".join(user_id_list))
-            else:
-                ret = -1
-                err_msg = "user has already in room"
-                room_id = -1
+    room_runtime = game_mgr.init_room_runtime(controller, room_id)
+    if not room_runtime.add_user(user_id):
+        ret = -1
+        err_msg = "user has already in room"
+        room_id = -1
 
     res.content = {
         "ret": ret,

@@ -22,42 +22,42 @@ def synchronization_heart_beat_service_run(controller, req, res):
     mode = req.content["mode"]
     life_time = req.content["time"]     # 单位秒，浮点数
 
-    ret = 0
-    err_msg = ''
-
-    key = ckv.get_ckv_heart_beat(user_id)
-    now_time = time.time()
-
-    if mode == 1:
-
-        res_dict = controller.handler_dict[config.ROOM_MGR_QUERY_USER_BELONGED_ROOM_SERVICE].inline_call(controller, {
-            "user_id": user_id,
-        })
-        if res_dict["ret"] == -1:
-            res.content = {
-                "ret": -1,
-                "err_msg": "try to reconnect"
-            }
-            return
-        controller.mem_cache.set(key, now_time)
-        sync_mgr.check_next_heart_beat(controller, user_id, now_time, life_time)
-
-    elif mode == 2:
-        last_time = life_time   # 上一次收到心跳的时间，这个是延时任务填的参数
-        tick_time = controller.mem_cache.get(key)
-        if abs(last_time - tick_time) < 1e-3:
-            controller.handler_dict[config.ROOM_MGR_EXIST_ROOM_SERVICE].inline_call(controller, {
-                "user_id": user_id
-            })
-            controller.mem_cache.remove(key)
-            print user_id, "exist."
-    else:
-        ret = -1
-        err_msg = "mode un know"
+    # ret = 0
+    # err_msg = ''
+    #
+    # user_runtime = ckv.get_ckv_user_runtime(user_id)
+    # now_time = time.time()
+    #
+    # if mode == 1:
+    #
+    #     res_dict = controller.handler_dict[config.ROOM_MGR_QUERY_USER_BELONGED_ROOM_SERVICE].inline_call(controller, {
+    #         "user_id": user_id,
+    #     })
+    #     if res_dict["ret"] == -1:
+    #         res.content = {
+    #             "ret": -1,
+    #             "err_msg": "try to reconnect"
+    #         }
+    #         return
+    #     controller.mem_cache.set(key, now_time)
+    #     sync_mgr.check_next_heart_beat(controller, user_id, now_time, life_time)
+    #
+    # elif mode == 2:
+    #     last_time = life_time   # 上一次收到心跳的时间，这个是延时任务填的参数
+    #     tick_time = controller.mem_cache.get(key)
+    #     if tick_time is None or abs(last_time - tick_time) < 1e-3:
+    #         controller.handler_dict[config.ROOM_MGR_EXIST_ROOM_SERVICE].inline_call(controller, {
+    #             "user_id": user_id
+    #         })
+    #         controller.mem_cache.remove(key)
+    #         print user_id, "exist."
+    # else:
+    #     ret = -1
+    #     err_msg = "mode un know"
 
     res.content = {
-        "ret": ret,
-        "err_msg": err_msg
+        "ret": 0,
+        "err_msg": ''
     }
 
 

@@ -3,7 +3,6 @@ from server_core.function_handler import FunctionHandler
 from server_core.log import Log
 from server_core import config
 from server_impl.server_config import ckv
-import json
 
 
 def room_mgr_query_room_users_service_pretreatment(controller, req, res):
@@ -19,12 +18,8 @@ def room_mgr_query_room_users_service_run(controller, req, res):
     err_msg = ""
     ret = 0
 
-    key = ckv.get_ckv_query_room_users(room_id)
-    user_id_list = controller.mem_cache.get(key)
-
-    if user_id_list is None:
-        ret = -1
-        err_msg = "room id not exist"
+    room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
+    user_id_list = room_runtime.get_user_id_list_str()
 
     res.content = {
         "ret": ret,

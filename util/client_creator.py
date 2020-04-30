@@ -188,23 +188,51 @@ def sync_server_creator():
     # })
 
     # ===============================================
+    # cc.load_conf({
+    #     "class_name": "user sync",
+    #     "struct_name": "report action"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    #     "action": "string"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    # })
+    # cc.create()
+    # ===============================================
+    # cc.load_conf({
+    #     "class_name": "user sync",
+    #     "struct_name": "query action"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "action": "string"
+    # })
+    # cc.create()
+    # ===============================================
     cc.load_conf({
         "class_name": "user sync",
-        "struct_name": "report action"
+        "struct_name": "report attack"
     })
     cc.load_request({
         "user_id": "int",
-        "action": "string"
+        "damage": "int",
     })
     cc.load_response({
         "ret": "int",
-        "err_msg": "string",
+        "err_msg": "string"
     })
     cc.create()
     # ===============================================
     cc.load_conf({
         "class_name": "user sync",
-        "struct_name": "query action"
+        "struct_name": "query attack"
     })
     cc.load_request({
         "user_id": "int",
@@ -212,12 +240,11 @@ def sync_server_creator():
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "action": "string"
+        "damage": "int"
     })
     cc.create()
 
 
 if __name__ == '__main__':
     # game_mgr_creator()
-
     sync_server_creator()

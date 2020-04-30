@@ -30,7 +30,6 @@ class ConnectionPool:
         conn.assign(client_fd, conn_id)
         if len(self.connections) < config.NET_CONNECTION_POOL_SIZE:
             self.connections[conn_id] = conn
-            self.logger.debug("connection count = " + str(len(self.connections)))
             return conn_id
         else:
             self.logger.warn("connect pool is full")

@@ -66,6 +66,7 @@
 | user_id   | int  | 用户id                                          |
 | room_type | int  | 游戏房间类型【1 初始场景】                      |
 | room_id   | int  | 【可选】room_type==3, 表示玩家加入room_id的游戏 |
+| frame     | int  |                                                 |
 
 ps:
 
@@ -100,7 +101,7 @@ ps:
 | 属性名       | 类型   | 备注                               |
 | ------------ | ------ | ---------------------------------- |
 | ret          | int    | 标注请求结果                       |
-| user_id_list | string | 玩家用户名集合，用英文分号分隔 “;” |
+| user_id_list | string | 玩家用户ID集合，用英文分号分隔 “;” |
 | err_msg      | string | 错误信息                           |
 
 
@@ -183,6 +184,7 @@ ps:
 | ------- | ---- | ---------------------------------------------- |
 | user_id | int  | 用户id                                         |
 | time    | int  | Unity Time.time() 向下取整，毫秒级别，发包时间 |
+| frame   | int  |                                                |
 
 **Response**
 
@@ -251,6 +253,8 @@ ps:
 | ------- | ------ | -------- |
 | user_id | int    | 用户id   |
 | action  | string | 表示行为 |
+| frame   | int    |          |
+|         |        |          |
 
 **Response**
 
@@ -258,6 +262,7 @@ ps:
 | ------- | ------ | ------------ |
 | ret     | int    | 标注请求结果 |
 | err_msg | string | 错误信息     |
+| frame   | int    |              |
 
 
 
@@ -271,17 +276,20 @@ ps:
 
 **Request**:
 
-| 属性名  | 类型 | 备注   |
-| ------- | ---- | ------ |
-| user_id | int  | 用户id |
+| 属性名  | 类型 | 备注 |
+| ------- | ---- | ---- |
+| frame   | int  |      |
+| user_id | int  |      |
 
 **Response**
 
-| 属性名  | 类型   | 备注         |
-| ------- | ------ | ------------ |
-| ret     | int    | 标注请求结果 |
-| err_msg | string | 错误信息     |
-| action  | string | 表示行为     |
+| 属性名  | 类型   | 备注                                        |
+| ------- | ------ | ------------------------------------------- |
+| ret     | int    | 标注请求结果                                |
+| err_msg | string | 错误信息                                    |
+| action  | string | 表示行为  user_id\|action#[...]#[...]#[...] |
+
+
 
 
 
@@ -296,6 +304,7 @@ ps:
 | 属性名  | 类型 | 备注   |
 | ------- | ---- | ------ |
 | user_id | int  | 用户id |
+|         |      |        |
 
 **Response**
 
@@ -303,6 +312,7 @@ ps:
 | ------- | ------ | --------------------------- |
 | ret     | int    | 标注请求结果，0成功，-1失败 |
 | err_msg | string | 错误信息                    |
+| room_id | int    |                             |
 
 
 
@@ -314,7 +324,7 @@ ps:
 | ------------- | ----- | --------------------- |
 | user_id       | int   | 用户id                |
 | matching_time | float | 匹配时间，单位秒      |
-| mode          | int   | 1 开始匹配，0取消匹配 |
+| mode          | int   | 1 开始匹配，2取消匹配 |
 
 **Response**
 
@@ -344,3 +354,24 @@ ps:
 | err_msg | string | 错误信息                                             |
 | room_id | int    | 房间ID                                               |
 
+
+
+## 4.4 玩家事件 [player_event_service] [1033]
+
+
+
+**Request**:
+
+| 属性名  | 类型   | 备注   |
+| ------- | ------ | ------ |
+| user_id | int    | 用户id |
+| event   | string |        |
+| param   | string |        |
+|         |        |        |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |

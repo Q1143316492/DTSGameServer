@@ -24,10 +24,7 @@ def room_mgr_exist_room_service_run(controller, req, res):
     user_id = str(req.content["user_id"])
 
     # 查询这个玩家之前在那个房间, 然后删除记录
-    game_room.out_of_last_room(controller, res, user_id)
-
-    # 清除玩家上报的同步信息
-    sync_mgr.clear_sync_msg(controller, user_id)
+    game_room.out_of_last_room(controller, user_id)
 
     res.content = {
         "ret": 0,

@@ -1,35 +1,23 @@
+# coding=utf-8
 from server_core import config
+from server_impl.base.sync_mgr import sync_mgr
 from server_impl.server_config import ckv
 
 
-def out_of_last_room(controller, res, user_id):
+def out_of_last_room(controller, user_id):
     res_dict = controller.handler_dict[config.ROOM_MGR_QUERY_USER_BELONGED_ROOM_SERVICE].inline_call(controller, {
         "user_id": user_id,
     })
     if res_dict["ret"] == 0:
         room_id = res_dict["room_id"]
-        key = ckv.get_ckv_query_room_users(room_id)
-        users = controller.mem_cache.get(key)
-        if users is not None:
-            user_id_list = users.split(";")
-            if user_id in user_id_list:
-                user_id_list.remove(user_id)
 
-            if len(user_id_list) == 0:
-                controller.mem_cache.remove(key)
-            else:
-                controller.mem_cache.set(key, ";".join(user_id_list))
+        room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
+        room_runtime.remove_user(user_id)
 
-        controller.mem_cache.remove(ckv.get_ckv_user_enter_room(user_id))
-        controller.mem_cache.remove(ckv.get_ckv_action_list(user_id))
+        # TODO 房间没人的时候做一些收尾
 
-        return
-    else:
-        res.content = {
-            "ret": res_dict["ret"],
-            "err_msg": "out_of_last_room fail." + res_dict["err_msg"]
-        }
-        return
+        user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
+        user_runtime.clear()
 
 
 def register_a_room(controller, user_id):
@@ -45,3 +33,12 @@ def register_a_room(controller, user_id):
         ret = -1
         err_msg = "try again. register room error. " + res_dict["err_msg"]
     return room_id, ret, err_msg
+
+
+def get_room_user_id_list(controller, room_id):
+    ret_dict = controller.handler_dict[config.ROOM_MGR_QUERY_ROOM_USERS_SERVICE].inline_call(controller, {
+        "room_id": room_id
+    })
+    if ret_dict["ret"] != 0:
+        return None
+    return [int(user_id) for user_id in ret_dict["user_id_list"].split(";")]

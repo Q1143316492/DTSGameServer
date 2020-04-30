@@ -23,15 +23,21 @@ def room_mgr_query_user_belonged_room_service_run(controller, req, res):
     ret = 0
     err_msg = ""
 
-    query_ret = controller.mem_cache.get(ckv.get_ckv_user_enter_room(user_id))
-    room_type, room_id = -1, -1
-    if query_ret is not None:
-        room_type, room_id = query_ret.split("#")
-    else:
-        ret = -1
-        err_msg = "room_query_user_belonged_room_service user not exist "
+    room_type = -1
+    room_id = -1
 
-    # 设置返回 dict
+    user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
+
+    if user_runtime is None:
+        ret = -1
+        err_msg = 'user not enter any room'
+    else:
+        room_type, room_id = user_runtime.get_room()
+
+        if room_type is None or room_id is None:
+            ret = -1
+            err_msg = 'room not exist'
+
     res.content = {
         "ret": ret,
         "room_type": room_type,

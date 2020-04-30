@@ -2,6 +2,7 @@
 from game_mgr_play_alone_service import GameMgrPlayAloneService
 from game_mgr_play_with_others_service import GameMgrPlayWithOthersService
 from game_mgr_query_matching_result_service import GameMgrQueryMatchingResultService
+from server_impl.game_mgr_server.game_mgr_player_event_service import GameMgrPlayerEventService
 
 
 class GameMgrServer:
@@ -27,3 +28,6 @@ class GameMgrServer:
 
         game_mgr_query_matching_result_service = GameMgrQueryMatchingResultService()
         self.server.add_handler(game_mgr_query_matching_result_service.func_handler)
+
+        game_mgr_player_event_service = GameMgrPlayerEventService()
+        self.server.add_handler(game_mgr_player_event_service.func_handler)

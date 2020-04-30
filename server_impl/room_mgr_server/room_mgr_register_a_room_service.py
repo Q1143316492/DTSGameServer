@@ -18,20 +18,16 @@ def room_mgr_register_a_room_service_run(controller, req, res):
     room_id = 0
     err_msg = ''
 
+    # 除了游戏大厅，其他房间都需要这个地方注册出来
     key = ckv.get_ckv_server_room_id_increase()
-    with controller.mem_cache.lock(key):
-        count = controller.mem_cache.get(key)
+    count = controller.mem_cache.get(key)
 
-        if count is None:
-            room_id = count = 1
-        elif not isinstance(count, int):
-            ret = -1
-            room_id = -1
-            err_msg = "count is not int. something happened"
-        else:
-            count += 1
-            room_id = count
-        controller.mem_cache.set(key, count)
+    if count is None:
+        room_id = count = 1
+    else:
+        count += 1
+        room_id = count
+    controller.mem_cache.set(key, count)
 
     # 设置返回 dict
     res.content = {

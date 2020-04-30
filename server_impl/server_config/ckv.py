@@ -1,10 +1,12 @@
 # coding=utf-8
 
 
-# 【玩家】
-# 记录玩家进入的房间信息
-def get_ckv_user_enter_room(user):
-    return "USER#ENTER#ROOM#{}".format(user)
+def get_ckv_user_runtime(user_id):
+    return "PLAYER#{}".format(user_id)
+
+
+def get_ckv_room_runtime(room_id):
+    return "ROOM#RUNTIME#{}".format(room_id)
 
 
 # 【游戏房间】
@@ -24,16 +26,7 @@ def get_ckv_user_in_matching():
     return "USER#IN#MATCHING"
 
 
-# 【心跳包】
-def get_ckv_heart_beat(user_id):
-    return "HEART#BEAT#" + str(user_id)
-
-
-# 【同步】
-# 记录某个玩家 上报的 位置信息
-def get_ckv_report_transform(user_id):
-    return "REPORT#TRANSFORM#USER_ID#{}".format(user_id)
-
-
-def get_ckv_action_list(user_id):
-    return "ACTION#LIST#USER_ID#{}".format(user_id)
+# 同步玩家帧同步类
+# TODO 重构
+def get_ckv_action_list(room_id):
+    return "ACTION#LIST#ROOM_ID#{}".format(room_id)
