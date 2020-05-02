@@ -17,9 +17,14 @@ def room_mgr_query_room_users_service_run(controller, req, res):
     room_id = req.content["room_id"]
     err_msg = ""
     ret = 0
+    user_id_list = ''
 
     room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
-    user_id_list = room_runtime.get_user_id_list_str()
+
+    if room_runtime is None:
+        ret = -1
+    else:
+        user_id_list = room_runtime.get_user_id_list_str()
 
     res.content = {
         "ret": ret,

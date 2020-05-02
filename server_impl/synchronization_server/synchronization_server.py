@@ -19,7 +19,6 @@ class SynchronizationServer:
         # user_login_service = UserLoginService()
         # [second] hook the service instance to this server
         # self.server.add_handler(user_login_service.func_handler)
-        # todo here
 
         synchronization_query_user_transform_service = SynchronizationQueryUserTransformService()
         self.server.add_handler(synchronization_query_user_transform_service.func_handler)

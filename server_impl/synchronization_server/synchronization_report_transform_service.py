@@ -22,13 +22,20 @@ def synchronization_report_transform_service_run(controller, req, res):
     rotation = req.content["rotation"]
     req_time = req.content["time"]
 
-    user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
-    user_runtime.role.set_transform(position=position, rotation=rotation)
+    ret = 0
+    err_msg = ''
 
-    # 设置返回 dict
+    user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
+
+    if user_runtime is not None:
+        user_runtime.role.set_transform(position=position, rotation=rotation)
+    else:
+        ret = -1
+        err_msg = "player has already out"
+
     res.content = {
-        "ret": 0,
-        "err_msg": "",
+        "ret": ret,
+        "err_msg": err_msg,
         "time": req_time
     }
 

@@ -18,7 +18,6 @@ class RoomMgrServer:
         # user_login_service = UserLoginService()
         # [second] hook the service instance to this server
         # self.server.add_handler(user_login_service.func_handler)
-        # todo here
 
         room_mgr_enter_room_service = RoomMgrEnterRoomService()
         self.server.add_handler(room_mgr_enter_room_service.func_handler)

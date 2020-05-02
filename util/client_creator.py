@@ -154,18 +154,34 @@ def game_mgr_creator():
     # })
     # cc.create()
     # query matching result
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "query matching result"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    #     "player_count": "int",
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "room_id": "int"
+    # })
+    # cc.create()
+    # ====================================================
     cc.load_conf({
         "class_name": "game mgr",
-        "struct_name": "query matching result"
+        "struct_name": "fight system"
     })
     cc.load_request({
-        "user_id": "int",
-        "player_count": "int",
+        "room_id": "int",
+        "opt": "string",
+        "param": "string"
     })
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "room_id": "int"
+        "msg": "string"
     })
     cc.create()
 
@@ -246,5 +262,5 @@ def sync_server_creator():
 
 
 if __name__ == '__main__':
-    # game_mgr_creator()
-    sync_server_creator()
+    game_mgr_creator()
+    # sync_server_creator()

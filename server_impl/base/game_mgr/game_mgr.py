@@ -61,8 +61,6 @@ def matching_some_players(controller, user_list, room_id):
         num += 1
         if num > 20:
             break
-    sync_controller = frame_sync.FrameSync(room_id)
-    controller.mem_cache.set(ckv.get_ckv_action_list(room_id), sync_controller)
     return num, 0, ""  # num, ret, err_msg
 
 

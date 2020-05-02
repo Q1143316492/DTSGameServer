@@ -375,3 +375,40 @@ ps:
 | ------- | ------ | --------------------------- |
 | ret     | int    | 标注请求结果，0成功，-1失败 |
 | err_msg | string | 错误信息                    |
+| event   | string |                             |
+| param   | string |                             |
+
+
+
+## 4.4 玩家事件 [fight_system_service] [1034]
+
+
+
+**Request**:
+
+| 属性名  | 类型   | 备注   |
+| ------- | ------ | ------ |
+| room_id | int    | 房间id |
+| opt     | string |        |
+| param   | string |        |
+|         |        |        |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |
+| msg     | string |                             |
+| opt     | string |                             |
+
+```
+[1]
+opt : attacked
+param : player_id, hp
+
+[2]
+opt : query_players
+
+```
+

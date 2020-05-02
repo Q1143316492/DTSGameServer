@@ -18,19 +18,19 @@ def synchronization_query_user_transform_service_run(controller, req, res):
 
     user_id = req.content["user_id"]
     req_time = req.content["time"]
+
     err_msg = ""
     ret = 0
 
-    # 处理业务
+    position = ''
+    rotation = ''
 
     user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
-    position, rotation = user_runtime.role.get_transform()
-
-    if position is None or rotation is None:
+    if user_runtime is not None:
+        position, rotation = user_runtime.role.get_transform()
+    else:
         ret = -1
-        err_msg = "key not exist"
-        position = ''
-        rotation = ''
+        err_msg = 'user exit'
 
     res.content = {
         "ret": ret,

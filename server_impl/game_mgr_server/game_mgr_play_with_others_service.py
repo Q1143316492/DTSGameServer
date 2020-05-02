@@ -34,7 +34,8 @@ def game_mgr_play_with_others_service_run(controller, req, res):
 
     res.content = {
         "ret": ret,
-        "err_msg": err_msg
+        "err_msg": err_msg,
+        "mode": mode
     }
 
 

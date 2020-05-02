@@ -23,7 +23,6 @@ def synchronization_report_action_service_run(controller, req, res):
 
     err_msg = ''
 
-    # 查询用户所在游戏房间
     req_dict = controller.handler_dict[config.ROOM_MGR_QUERY_USER_BELONGED_ROOM_SERVICE].inline_call(controller, {
         "user_id": user_id
     })
@@ -35,14 +34,8 @@ def synchronization_report_action_service_run(controller, req, res):
         return
     room_id = req_dict["room_id"]
 
-    # 同步
-    # TODO REPORT
-    key = ckv.get_ckv_action_list(room_id)
-    sync_controller = controller.mem_cache.get(key)
-
-    if sync_controller is None:
-        sync_controller = frame_sync.FrameSync(room_id)
-        controller.mem_cache.set(ckv.get_ckv_action_list(room_id), sync_controller)
+    room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
+    sync_controller = room_runtime.get_sync()
 
     if sync_controller.report_logic_frame(controller, client_frame, user_id, action):
         ret = 0

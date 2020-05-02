@@ -206,7 +206,8 @@ if __name__ == '__main__':
             # {"service_name": "play alone"},
             # {"service_name": "play with others"}
             # {"service_name": "query matching result"}
-            {"service_name": "player event"}
+            # {"service_name": "player event"}
+            {"service_name": "fight system"}
         ]
     })
     sc.create()

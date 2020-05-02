@@ -18,6 +18,7 @@ def out_of_last_room(controller, user_id):
 
         user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
         user_runtime.clear()
+        controller.mem_cache.remove(ckv.get_ckv_user_runtime(user_id))
 
 
 def register_a_room(controller, user_id):

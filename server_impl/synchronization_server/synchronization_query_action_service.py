@@ -34,14 +34,8 @@ def synchronization_query_action_service_run(controller, req, res):
         return
     room_id = req_dict["room_id"]
 
-    # TODO query action
-    key = ckv.get_ckv_action_list(room_id)
-    sync_controller = controller.mem_cache.get(key)
-
-    if sync_controller is None:
-        sync_controller = frame_sync.FrameSync(room_id)
-        controller.mem_cache.set(ckv.get_ckv_action_list(room_id), sync_controller)
-
+    room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
+    sync_controller = room_runtime.get_sync()
     action = sync_controller.query_logic_frame(user_id, client_frame)
 
     if action is None:
