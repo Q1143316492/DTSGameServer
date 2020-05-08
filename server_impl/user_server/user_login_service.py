@@ -44,7 +44,6 @@ def user_login_service_run(controller, req, res):
         "user_id": user_id,
         "time": req_time
     }
-    print res.content
 
 
 def user_login_service_aftertreatment(controller, req, res):

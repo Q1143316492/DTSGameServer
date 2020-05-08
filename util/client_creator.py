@@ -169,19 +169,35 @@ def game_mgr_creator():
     # })
     # cc.create()
     # ====================================================
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "fight system"
+    # })
+    # cc.load_request({
+    #     "room_id": "int",
+    #     "opt": "string",
+    #     "param": "string"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "msg": "string"
+    # })
+    # cc.create()
+    # =========================================================
     cc.load_conf({
         "class_name": "game mgr",
-        "struct_name": "fight system"
+        "struct_name": "register robot"
     })
     cc.load_request({
         "room_id": "int",
-        "opt": "string",
-        "param": "string"
+        "robot_key": "int",
+        "user_id": "int"
     })
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "msg": "string"
+        "robot_id": "int"
     })
     cc.create()
 

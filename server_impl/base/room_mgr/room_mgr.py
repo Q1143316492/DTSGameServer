@@ -33,10 +33,16 @@ class GameRoom:
         if user_id in self._user_id_list:
             self._user_id_list.remove(str(user_id))
             self.fight_system.remove_player(int(user_id))
-
+    
+    def isOnline(self, user_id):
+        return str(user_id) in self._user_id_list
+    
     def get_user_id_list_str(self):
         return ";".join(self._user_id_list)
 
 
 if __name__ == '__main__':
-    pass
+    a = {
+        1: 2
+    }
+    print None in a

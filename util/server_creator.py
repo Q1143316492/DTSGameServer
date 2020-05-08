@@ -158,7 +158,7 @@ if __name__ == '__main__':
     # sc.load_config({
     #     "server_name": "user",
     #     "service_list": [
-    #         {"service_name": "login"},    # 名字有多个单词请用空格隔开
+    #         {"service_name": "login"},
     #         {"service_name": "register"},
     #     ]
     # })
@@ -203,11 +203,12 @@ if __name__ == '__main__':
     sc.load_config({
         "server_name": "game mgr",
         "service_list": [
-            # {"service_name": "play alone"},
-            # {"service_name": "play with others"}
-            # {"service_name": "query matching result"}
-            # {"service_name": "player event"}
-            {"service_name": "fight system"}
+             # {"service_name": "play alone"},
+             # {"service_name": "play with others"},
+             # {"service_name": "query matching result"},
+             # {"service_name": "player event"},
+             # {"service_name": "fight system"},
+            {"service_name": "register robot"},
         ]
     })
     sc.create()

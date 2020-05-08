@@ -1,17 +1,7 @@
 # coding=utf-8
-
-
-class Player:
-
-    def __init__(self):
-        self.hp = 100
-        self.alive = True
-
-    def attacked(self, hp):
-        self.hp -= max(0, hp)
-        if self.hp <= 0:
-            self.hp = 0
-            self.alive = False
+import game_role
+from game_role import Player
+from server_impl.base.common import common
 
 
 class FightSystem:
@@ -19,6 +9,9 @@ class FightSystem:
     def __init__(self, room_id):
         self.room_id = room_id
         self.players = {}   # int => Player
+
+        self.robots_keys = {}  # robots_key => user_id
+        self.robots = {}
 
     def add_player(self, player_id):
         if player_id not in self.players:
@@ -29,8 +22,8 @@ class FightSystem:
             del self.players[player_id]
 
     def attacked(self, player_id, hp):
-        # if self.room_id == 0:   # 0表示 游戏大厅，客户端不会发攻击命令，双保险
-        #     return
+        if self.room_id == 0:   # 0表示 游戏大厅，客户端不会发攻击命令，双保险
+            return
         if self.victory():
             return
         if player_id in self.players:

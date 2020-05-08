@@ -380,7 +380,7 @@ ps:
 
 
 
-## 4.4 玩家事件 [fight_system_service] [1034]
+## 4.5 战斗系统 [fight_system_service] [1034]
 
 
 
@@ -412,3 +412,23 @@ opt : query_players
 
 ```
 
+## 4.5 注册机器人 [register_robot_service] [1035]
+
+
+
+**Request**:
+
+| 属性名    | 类型 | 备注   |
+| --------- | ---- | ------ |
+| room_id   | int  | 房间id |
+| robot_key | int  |        |
+| user_id   | int  |        |
+
+**Response**
+
+| 属性名    | 类型   | 备注                               |
+| --------- | ------ | ---------------------------------- |
+| ret       | int    | 标注请求结果，0成功，-1失败        |
+| err_msg   | string | 错误信息                           |
+| robot_id  | int    | 机器人id，和用户id同作用不过是负数 |
+| robot_key | int    | 机器人的key                        |

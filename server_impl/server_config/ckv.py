@@ -9,6 +9,10 @@ def get_ckv_room_runtime(room_id):
     return "ROOM#RUNTIME#{}".format(room_id)
 
 
+def get_ckv_game_server_core():
+    return "GET#CKV#GAME#SERVER#CODE"
+
+
 # 全局的房间号自增 ID
 def get_ckv_server_room_id_increase():
     return "SERVER#ROOM#ID#INCREASE"

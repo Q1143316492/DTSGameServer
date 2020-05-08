@@ -60,7 +60,7 @@ class WorkerPool:
         # 通用工具集
         self.common_tools = CommonTools()
 
-        # TODO 未实现
+        # TODO 多进程 删掉了 并没有什么用
         self.process_count = 1
         self.process_pool = None
         # 单进程模式下处理完的事件丢到这里，后面主循环处理发回客户端
@@ -74,16 +74,8 @@ class WorkerPool:
         self.process_count = process_count
 
     def start(self):
-
         self.common_tools.init(self.handler_dict)
-
-        if self.mode == "multi":
-            raise NotImplementedError()
-            # self.logger.info("worker pool multiprocess mode")
-            # self.process_pool = multiprocessing.Pool(processes=self.process_count)
-        else:
-            self.logger.info("worker pool. light mode")
-
+        self.logger.info("worker pool. light mode")
         self.logger.info("work process start success")
 
     def stop(self):
@@ -101,17 +93,12 @@ class WorkerPool:
     # 需要路由到具体逻辑代码
     # 最后调用 self.conn_pool.send_event(conn_id, res)， res 会在合适的时候发给客户端
     def message_handler(self, conn_id, msg):
-        # response_queue_multi = multiprocessing.Queue()
-        if self.mode == "multi":
-            raise NotImplementedError()
-            # self.process_pool.apply(func=worker_function, args=(Request(conn_id, msg), response_queue_multi,))
-        else:
-            req = Request(conn_id, msg)
-            res = Response(conn_id)
-            handler = req.get_handler()
-            if handler in self.handler_dict.keys():  # 根据 request 哈希到具体函数
-                self.handler_dict[handler].run(self.common_tools, req, res)
-                self.response_queue.append(res)
+        req = Request(conn_id, msg)
+        res = Response(conn_id)
+        handler = req.get_handler()
+        if handler in self.handler_dict.keys():  # 根据 request 哈希到具体函数
+            self.handler_dict[handler].run(self.common_tools, req, res)
+            self.response_queue.append(res)
 
     def update(self):
         self.common_tools.update()
@@ -119,18 +106,7 @@ class WorkerPool:
 
     # 消费处理好的 response，发向客户端
     def message_consumer(self):
-        if self.mode == "multi":
-            raise NotImplementedError()
-            # while True:
-            #     try:
-            #         res = self.response_queue_multi.get_nowait()
-            #         # self.conn_pool.send_handler(res.conn_id, res.msg)
-            #     except Queue.Empty:
-            #         break
-        else:
-            # 轻量级模式下：IO复用+单进程单线程
-            if len(self.response_queue):
-                res = self.response_queue[0]
-                # print res.msg
-                self.response_queue = self.response_queue[1:]
-                self.conn_pool.send_handler(res.conn_id, res.msg)
+        if len(self.response_queue):
+            res = self.response_queue[0]
+            self.response_queue = self.response_queue[1:]
+            self.conn_pool.send_handler(res.conn_id, res.msg)

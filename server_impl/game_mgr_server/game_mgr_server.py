@@ -4,6 +4,7 @@ from game_mgr_play_with_others_service import GameMgrPlayWithOthersService
 from game_mgr_query_matching_result_service import GameMgrQueryMatchingResultService
 from server_impl.game_mgr_server.game_mgr_player_event_service import GameMgrPlayerEventService
 from server_impl.game_mgr_server.game_mgr_fight_system_service import GameMgrFightSystemService
+from game_mgr_register_robot_service import GameMgrRegisterRobotService
 
 
 class GameMgrServer:
@@ -35,3 +36,6 @@ class GameMgrServer:
 
         game_mgr_fight_system_service = GameMgrFightSystemService()
         self.server.add_handler(game_mgr_fight_system_service.func_handler)
+
+        game_mgr_register_robot_service = GameMgrRegisterRobotService()
+        self.server.add_handler(game_mgr_register_robot_service.func_handler)
