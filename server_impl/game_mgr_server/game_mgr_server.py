@@ -5,6 +5,7 @@ from game_mgr_query_matching_result_service import GameMgrQueryMatchingResultSer
 from server_impl.game_mgr_server.game_mgr_player_event_service import GameMgrPlayerEventService
 from server_impl.game_mgr_server.game_mgr_fight_system_service import GameMgrFightSystemService
 from game_mgr_register_robot_service import GameMgrRegisterRobotService
+from game_mgr_query_born_point_service import GameMgrQueryBornPointService
 
 
 class GameMgrServer:
@@ -39,3 +40,6 @@ class GameMgrServer:
 
         game_mgr_register_robot_service = GameMgrRegisterRobotService()
         self.server.add_handler(game_mgr_register_robot_service.func_handler)
+
+        game_mgr_query_born_point_service = GameMgrQueryBornPointService()
+        self.server.add_handler(game_mgr_query_born_point_service.func_handler)

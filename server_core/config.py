@@ -61,6 +61,7 @@ GAME_MGR_QUERY_MATCHING_RESULT_SERVICE = 1032
 GAME_MGR_PLAYER_EVENT_SERVICE = 1033
 GAME_MGR_FIGHT_SYSTEM_SERVICE = 1034
 GAME_MGR_REGISTER_ROBOT_SERVICE = 1035
+GAME_MGR_QUERY_BORN_POINT_SERVICE = 1036
 
 # =====================================================================================================================
 

@@ -24,7 +24,7 @@ def game_mgr_fight_system_service_run(controller, req, res):
 
     room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
 
-    if not room_runtime:
+    if room_runtime is None:
         res.content = {
             "ret": -1,
             "err_msg": '',

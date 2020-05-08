@@ -185,19 +185,34 @@ def game_mgr_creator():
     # })
     # cc.create()
     # =========================================================
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "register robot"
+    # })
+    # cc.load_request({
+    #     "room_id": "int",
+    #     "robot_key": "int",
+    #     "user_id": "int"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "robot_id": "int"
+    # })
+    # cc.create()
+    # =========================================================
     cc.load_conf({
         "class_name": "game mgr",
-        "struct_name": "register robot"
+        "struct_name": "query born point"
     })
     cc.load_request({
         "room_id": "int",
-        "robot_key": "int",
         "user_id": "int"
     })
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "robot_id": "int"
+        "born": "int"
     })
     cc.create()
 

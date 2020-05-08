@@ -432,3 +432,24 @@ opt : query_players
 | err_msg   | string | 错误信息                           |
 | robot_id  | int    | 机器人id，和用户id同作用不过是负数 |
 | robot_key | int    | 机器人的key                        |
+| born      | int    | 出生点编号                         |
+
+## 4.5 查询出生点 [query_born_point] [1036]
+
+
+
+**Request**:
+
+| 属性名  | 类型 | 备注   |
+| ------- | ---- | ------ |
+| room_id | int  | 房间id |
+| user_id | int  |        |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |
+| born    | int    |                             |
+| user_id | int    |                             |

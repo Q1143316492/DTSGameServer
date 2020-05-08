@@ -26,6 +26,8 @@ def game_mgr_register_robot_service_run(controller, req, res):
     robot_key = req.content["robot_key"]
     user_id = req.content["user_id"]
 
+    born_point = 0
+
     ret = 0
     err_msg = ''
 
@@ -63,7 +65,8 @@ def game_mgr_register_robot_service_run(controller, req, res):
         "ret": ret,
         "err_msg": err_msg,
         "robot_id": robot_id,
-        "robot_key": robot_key
+        "robot_key": robot_key,
+        "born": born_point
     }
 
 

@@ -208,7 +208,8 @@ if __name__ == '__main__':
              # {"service_name": "query matching result"},
              # {"service_name": "player event"},
              # {"service_name": "fight system"},
-            {"service_name": "register robot"},
+             # {"service_name": "register robot"},
+             {"service_name": "query born point"},
         ]
     })
     sc.create()

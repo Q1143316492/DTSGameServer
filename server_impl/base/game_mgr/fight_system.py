@@ -11,11 +11,23 @@ class FightSystem:
         self.players = {}   # int => Player
 
         self.robots_keys = {}  # robots_key => user_id
-        self.robots = {}
+        # self.robots = {}
+        
+        self.born_point = 0
+
+    def query_player_born_point(self, user_id):
+        if user_id not in self.players.keys():
+            return None
+        return self.players[user_id].born_point
 
     def add_player(self, player_id):
         if player_id not in self.players:
-            self.players[player_id] = Player()
+            if player_id < 0:
+                born_point = self.born_point
+                self.born_point += 1
+            else:
+                born_point = 0
+            self.players[player_id] = Player(born_point)
 
     def remove_player(self, player_id):
         if player_id in self.players:
