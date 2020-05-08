@@ -31,7 +31,7 @@ def synchronization_query_user_transform_service_run(controller, req, res):
     else:
         ret = -1
         err_msg = 'user exit'
-
+    
     res.content = {
         "ret": ret,
         "user_id": user_id,
