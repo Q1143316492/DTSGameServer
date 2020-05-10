@@ -28,7 +28,6 @@ def game_mgr_register_robot_service_run(controller, req, res):
 
     born_point = 0
 
-    print "robot:", robot_key, room_id
     ret = 0
     err_msg = ''
 

@@ -292,6 +292,40 @@ def sync_server_creator():
     cc.create()
 
 
+def user_router_creator():
+    cc = ClientNetworkCreator()
+    # cc.load_conf({
+    #     "class_name": "user",
+    #     "struct_name": "register"
+    # })
+    # cc.load_request({
+    #     "username": "string",
+    #     "password": "string"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "register_success": "bool"
+    # })
+
+    cc.load_conf({
+        "class_name": "user",
+        "struct_name": "change password"
+    })
+    cc.load_request({
+        "username": "string",
+        "password": "string",
+        "old_password": "string",
+    })
+    cc.load_response({
+        "ret": "int",
+        "err_msg": "string",
+        "success": "bool"
+    })
+    cc.create()
+
+
 if __name__ == '__main__':
-    game_mgr_creator()
+    user_router_creator()
+    # game_mgr_creator()
     # sync_server_creator()

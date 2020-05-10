@@ -36,12 +36,31 @@
 
 **Response**
 
-| 属性名           | 类型 | 备注         |
-| ---------------- | ---- | ------------ |
-| ret              | int  | 标注请求结果 |
-| register_success | bool | 是否允许登入 |
+| 属性名           | 类型   | 备注         |
+| ---------------- | ------ | ------------ |
+| ret              | int    | 标注请求结果 |
+| register_success | bool   | 是否允许登入 |
+| err_msg          | string |              |
 
 
+
+## 1.3 修改密码[user_change_password_service] [1003]
+
+**Request**:
+
+| 属性名       | 类型   | 备注   |
+| ------------ | ------ | ------ |
+| username     | string | 用户名 |
+| password     | string | 密码   |
+| old_password | string | 旧密码 |
+
+**Response**
+
+| 属性名  | 类型   | 备注         |
+| ------- | ------ | ------------ |
+| ret     | int    | 标注请求结果 |
+| success | bool   | 是否允许修改 |
+| err_msg | string |              |
 
 ---
 

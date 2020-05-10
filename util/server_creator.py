@@ -167,14 +167,15 @@ if __name__ == '__main__':
 
     sc = ServerCreator()
 
-    # sc.load_config({
-    #     "server_name": "user",
-    #     "service_list": [
-    #         # {"service_name": "login"},
-    #         # {"service_name": "register"},
-    #     ]
-    # })
-    # sc.create()
+    sc.load_config({
+        "server_name": "user",
+        "service_list": [
+            # {"service_name": "login"},
+            # {"service_name": "register"},
+            {"service_name": "change password"}
+        ]
+    })
+    sc.create()
 
     # sc.load_config({
     #     "server_name": "room mgr",
@@ -200,16 +201,16 @@ if __name__ == '__main__':
     # })
     # sc.create()
 
-    sc.load_config({
-        "server_name": "game mgr",
-        "service_list": [
-             # {"service_name": "play alone"},
-             # {"service_name": "play with others"},
-             # {"service_name": "query matching result"},
-             # {"service_name": "player event"},
-             # {"service_name": "fight system"},
-             # {"service_name": "register robot"},
-             {"service_name": "query born point"},
-        ]
-    })
-    sc.create()
+    # sc.load_config({
+    #     "server_name": "game mgr",
+    #     "service_list": [
+    #          # {"service_name": "play alone"},
+    #          # {"service_name": "play with others"},
+    #          # {"service_name": "query matching result"},
+    #          # {"service_name": "player event"},
+    #          # {"service_name": "fight system"},
+    #          # {"service_name": "register robot"},
+    #          # {"service_name": "query born point"},
+    #     ]
+    # })
+    # sc.create()

@@ -2,8 +2,7 @@
 from server_core.function_handler import FunctionHandler
 from server_core.log import Log
 from server_core import config
-import multiprocessing
-import json
+from server_impl.base.orm.user import User
 
 
 def user_register_service_pretreatment(controller, req, res):
@@ -16,19 +15,25 @@ def user_register_service_run(controller, req, res):
         Log().warn("service %d req parse err" % config.USER_LOGIN_SERVICE)
         return
 
-    Log().debug("register service: " + str(req.msg))
-
-    # 获取参数
     username = req.content["username"]
     password = req.content["password"]
 
-    # 处理业务 TODO
-    print "register_call"
+    user = User()
+    user.username = username
+    user.password = password
 
-    # 设置返回 dict
+    rows_effect = user.insert_to_db()
+
+    ret = 0
+    register_success = True
+
+    if rows_effect != 1:
+        ret = -1
+        register_success = False
+
     res.content = {
-        "ret": 0,
-        "register_success": False
+        "ret": ret,
+        "register_success": register_success
     }
 
 
