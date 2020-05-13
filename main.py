@@ -8,7 +8,7 @@ from server_impl.game_mgr_server import game_mgr_server
 
 if __name__ == '__main__':
     server = Server("cwl server", "01")
-    server.start(mode="select")
+    server.start(mode="epoll")
 
     # 加载 service
     user_server.UserServer(server)

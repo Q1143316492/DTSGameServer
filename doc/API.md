@@ -2,6 +2,28 @@
 
 [TOC]
 
+
+
+## 0.0 网络测试[user_network_test_service] [666]
+
+**Request**:
+
+| 属性名    | 类型   | 备注 |
+| --------- | ------ | ---- |
+| last_time | int    | ms   |
+| msg       | string |      |
+
+**Response**
+
+| 属性名    | 类型   | 备注         |
+| --------- | ------ | ------------ |
+| ret       | int    | 标注请求结果 |
+| err_msg   | string |              |
+| last_time | int    |              |
+| extend    | string |              |
+
+
+
 # 1.0 用户管理 user_server
 
 ## 1.1 用户登入[user_login_service] [1001]

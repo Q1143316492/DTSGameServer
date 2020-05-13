@@ -172,7 +172,8 @@ if __name__ == '__main__':
         "service_list": [
             # {"service_name": "login"},
             # {"service_name": "register"},
-            {"service_name": "change password"}
+            # {"service_name": "change password"}
+            {"service_name": "network test"}
         ]
     })
     sc.create()

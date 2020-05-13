@@ -307,20 +307,35 @@ def user_router_creator():
     #     "err_msg": "string",
     #     "register_success": "bool"
     # })
+    # cc.load_conf({
+    #     "class_name": "user",
+    #     "struct_name": "change password"
+    # })
+    # cc.load_request({
+    #     "username": "string",
+    #     "password": "string",
+    #     "old_password": "string",
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "success": "bool"
+    # })
+    # cc.create()
 
     cc.load_conf({
         "class_name": "user",
-        "struct_name": "change password"
+        "struct_name": "network test"
     })
     cc.load_request({
-        "username": "string",
-        "password": "string",
-        "old_password": "string",
+        "last_time": "float",
+        "msg": "string",
     })
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "success": "bool"
+        "last_time": "float",
+        "extend": "string",
     })
     cc.create()
 

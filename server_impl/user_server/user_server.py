@@ -2,6 +2,7 @@
 from user_login_service import UserLoginService
 from user_register_service import UserRegisterService
 from server_impl.user_server.user_change_password_service import UserChangePasswordService
+from server_impl.user_server.user_network_test_service import UserNetworkTestService
 
 
 class UserServer:
@@ -20,3 +21,6 @@ class UserServer:
 
         user_change_password_service = UserChangePasswordService()
         self.server.add_handler(user_change_password_service.func_handler)
+
+        user_network_test_service = UserNetworkTestService()
+        self.server.add_handler(user_network_test_service.func_handler)

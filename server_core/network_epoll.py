@@ -39,7 +39,7 @@ class Epoll(NetworkServerBase):
             client_fd = None
             try:
                 client_fd, remote = self.server_fd.accept()
-            except socket.error as e:   # 感觉 lt 下不会出现 accept 失败吧
+            except socket.error as e:
                 self.logger.debug("epoll lt accept socket.error " + str(e.errno))
             if not client_fd:
                 return
