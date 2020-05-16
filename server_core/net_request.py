@@ -104,3 +104,13 @@ class Request:
 # json 备注
 # str = json.dumps(obj)
 # obj = json.loads(str) ValueError
+
+
+if __name__ == '__main__':
+    obj = {
+        "ret" : 0,
+        "err_msg": "",
+        "frame": 0
+    }
+    str = json.dumps(obj)
+    print str
