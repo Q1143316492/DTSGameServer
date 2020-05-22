@@ -235,19 +235,21 @@ def sync_server_creator():
     # })
 
     # ===============================================
-    # cc.load_conf({
-    #     "class_name": "user sync",
-    #     "struct_name": "report action"
-    # })
-    # cc.load_request({
-    #     "user_id": "int",
-    #     "action": "string"
-    # })
-    # cc.load_response({
-    #     "ret": "int",
-    #     "err_msg": "string",
-    # })
-    # cc.create()
+    cc.load_conf({
+        "class_name": "user sync",
+        "struct_name": "report action"
+    })
+    cc.load_request({
+        "user_id": "int",
+        "action": "string",
+        "frame": "int"
+    })
+    cc.load_response({
+        "ret": "int",
+        "err_msg": "string",
+        "frame": "int"
+    })
+    cc.create()
     # ===============================================
     # cc.load_conf({
     #     "class_name": "user sync",

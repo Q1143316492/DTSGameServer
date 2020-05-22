@@ -282,11 +282,7 @@ ps:
 
 ## 3.4 行为同步 上报 [report_action_service] [1023]
 
-
-
 同步一些射击移动动画。
-
-
 
 **Request**:
 
@@ -294,7 +290,7 @@ ps:
 | ------- | ------ | -------- |
 | user_id | int    | 用户id   |
 | action  | string | 表示行为 |
-| frame   | int    |          |
+| frame   | int    | 上报帧   |
 |         |        |          |
 
 **Response**
@@ -303,7 +299,7 @@ ps:
 | ------- | ------ | ------------ |
 | ret     | int    | 标注请求结果 |
 | err_msg | string | 错误信息     |
-| frame   | int    |              |
+| frame   | int    | 下一次上报帧 |
 
 
 
@@ -430,8 +426,8 @@ ps:
 | 属性名  | 类型   | 备注   |
 | ------- | ------ | ------ |
 | room_id | int    | 房间id |
-| opt     | string |        |
-| param   | string |        |
+| opt     | string | 操作   |
+| param   | string | 参数   |
 |         |        |        |
 
 **Response**

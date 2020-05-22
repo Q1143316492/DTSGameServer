@@ -36,7 +36,7 @@ def game_mgr_fight_system_service_run(controller, req, res):
     if opt == "attacked":
         attack_id, player_id, hp = [int(v) for v in param.split(",")]
         room_runtime.fight_system.attacked(attack_id, player_id, hp)
-        msg = str(room_runtime.fight_system.get_gaol(attack_id))
+        msg = "#".join([str(attack_id), str(room_runtime.fight_system.get_gaol(attack_id))])
     elif opt == "query_players":
         msg = room_runtime.fight_system.query_players_hp()
 

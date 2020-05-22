@@ -42,12 +42,14 @@ class FightSystem:
             return
         self.check_hp(attack_id, player_id, hp)
 
+    # attack_id 攻击 player_id 造成了 hp 伤害
     def check_hp(self, attack_id, player_id, hp):
         if player_id in self.players:
             player = self.players[player_id]
             pre_state = player.alive
             player.attacked(hp)
-            if pre_state == True and player.alive == False:
+            # attack_id < 0 用户环境造成的伤害
+            if attack_id > 0 and pre_state is True and player.alive is False:
                 if attack_id in self.goal_panel:
                     self.goal_panel[attack_id] += 1
                 else:

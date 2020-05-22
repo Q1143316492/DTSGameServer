@@ -166,17 +166,17 @@ if __name__ == '__main__':
     # sc.create_service()
 
     sc = ServerCreator()
-
-    sc.load_config({
-        "server_name": "user",
-        "service_list": [
-            # {"service_name": "login"},
-            # {"service_name": "register"},
-            # {"service_name": "change password"}
-            {"service_name": "network test"}
-        ]
-    })
-    sc.create()
+    #
+    # sc.load_config({
+    #     "server_name": "user",
+    #     "service_list": [
+    #         {"service_name": "login"},
+    #         {"service_name": "register"},
+    #         {"service_name": "change password"},
+    #         {"service_name": "network test"},
+    #     ]
+    # })
+    # sc.create()
 
     # sc.load_config({
     #     "server_name": "room mgr",
@@ -190,17 +190,17 @@ if __name__ == '__main__':
     # })
     # sc.create()
 
-    # sc.load_config({
-    #     "server_name": "synchronization",
-    #     "service_list": [
-    #         # {"service_name": "query user transform"},
-    #         # {"service_name": "report transform"},
-    #         # {"service_name": "heart beat"},
-    #         # {"service_name": "report action"},
-    #         # {"service_name": "query action"},
-    #     ]
-    # })
-    # sc.create()
+    sc.load_config({
+        "server_name": "synchronization",
+        "service_list": [
+            {"service_name": "query user transform"},
+            {"service_name": "report transform"},
+            {"service_name": "heart beat"},
+            {"service_name": "report action"},
+            {"service_name": "query action"},
+        ]
+    })
+    sc.create()
 
     # sc.load_config({
     #     "server_name": "game mgr",

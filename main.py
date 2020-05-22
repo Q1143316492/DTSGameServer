@@ -16,4 +16,5 @@ if __name__ == '__main__':
     game_mgr_server.GameMgrServer(server)
     synchronization_server.SynchronizationServer(server)
 
+    # 事件循环
     server.run()

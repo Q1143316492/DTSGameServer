@@ -30,7 +30,7 @@ class Server:
         except Exception as e:
             self.logger.error("work process not init." + e.message)
 
-    # 预选择服务器IO模式
+    # 预选择服务器IO模式 epoll有bug,连接无法安全断开. select实测没light快 囧。。。
     def pre_bind_io_mode(self, port, mode):
         if not isinstance(mode, str):
             return False
