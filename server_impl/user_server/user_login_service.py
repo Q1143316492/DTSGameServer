@@ -26,9 +26,21 @@ def user_login_service_run(controller, req, res):
 
     if user is None:
         res.content = {
-            "ret": 0,
+            "ret": -1,
             "login_success": login_success,
-            "user_id": user_id,
+            "user_id": -1,
+            "time": req_time
+        }
+        return
+
+    res_dict = controller.handler_dict[config.ROOM_MGR_QUERY_USER_BELONGED_ROOM_SERVICE].inline_call(controller, {
+        "user_id": user.user_id,
+    })
+    if res_dict["ret"] == 0:
+        res.content = {
+            "ret": -1,
+            "login_success": False,
+            "user_id": -1,
             "time": req_time
         }
         return

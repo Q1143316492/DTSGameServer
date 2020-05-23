@@ -29,6 +29,7 @@ class FunctionHandler:
             self.last_handler = copy.copy(handler)
 
     def call(self, controller, req, res):
+        req.msg.un_encryption()
         self.system_pretreatment(req, res)  # 字符流的 req.msg，变成 python dict 存在于 req.content
         if callable(self.pre_handler):
             self.pre_handler(controller, req, res)
@@ -36,6 +37,7 @@ class FunctionHandler:
         if callable(self.last_handler):
             self.last_handler(controller, req, res)
         self.system_aftertreatment(req, res)
+        res.msg.encryption()
 
     def run(self, controller, req, res):
         is_debug = config.ConfigLoader().get("debug")

@@ -41,6 +41,22 @@ class Message:
         self.__now_size = 0
         self.__state = Message.PKG_RECV_HEAD
 
+    @staticmethod
+    def e_hash(i):
+        return i
+
+    def un_encryption(self):
+        tmp_list = [v for v in self.__message_val]
+        for i in range(0, len(tmp_list)):
+            tmp_list[i] = chr(((ord(tmp_list[i]) - Message.e_hash(i)) % 128 + 128) % 128)
+        self.__message_val = "".join(tmp_list)
+
+    def encryption(self):
+        tmp_list = [v for v in self.__message_val]
+        for i in range(0, len(tmp_list)):
+            tmp_list[i] = chr((ord(tmp_list[i]) + Message.e_hash(i)) % 128)
+        self.__message_val = "".join(tmp_list)
+
     def get_handler(self):
         if self.finish():
             return self.__handler_val
@@ -124,3 +140,14 @@ class Message:
                 self.__message_val = self.__buf
                 self.__reset_buf()
         return read_size
+
+
+def un_encryption(msg):
+    l = [v for v in msg]
+    for i in range(0, len(l)):
+        l[i] = chr(ord(l[i]) - 1)
+    s = "".join(l)
+    print s
+
+if __name__ == '__main__':
+    un_encryption("bcdefg")

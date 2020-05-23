@@ -40,9 +40,3 @@ class GameRoom:
     def get_user_id_list_str(self):
         return ";".join(self._user_id_list)
 
-
-if __name__ == '__main__':
-    a = {
-        1: 2
-    }
-    print None in a
