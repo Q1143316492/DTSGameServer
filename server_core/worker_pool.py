@@ -60,7 +60,7 @@ class WorkerPool:
         # 通用工具集
         self.common_tools = CommonTools()
 
-        # TODO 多进程 删掉了 并没有什么用
+        # 多进程 删掉了 并没有什么用
         self.process_count = 1
         self.process_pool = None
         # 单进程模式下处理完的事件丢到这里，后面主循环处理发回客户端
@@ -98,6 +98,12 @@ class WorkerPool:
         handler = req.get_handler()
         if handler in self.handler_dict.keys():  # 根据 request 哈希到具体函数
             self.handler_dict[handler].run(self.common_tools, req, res)
+            for v in res.msg_queue:
+                if isinstance(v, Response):
+                    v.pack_buffer(req.msg.get_handler())
+                    v.msg.encryption()
+                    self.response_queue.append(v)
+            res.msg_queue = []
             self.response_queue.append(res)
 
     def update(self):

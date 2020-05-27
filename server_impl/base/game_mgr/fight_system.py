@@ -17,6 +17,16 @@ class FightSystem:
 
         self.goal_panel = {}
 
+    def add_hp(self, user_id, hp):
+        if user_id not in self.players:
+            return
+        self.players[user_id].add_hp(hp)
+
+    def get_player(self, user_id):
+        if user_id in self.players:
+            return self.players[user_id]
+        return None
+
     def query_player_born_point(self, user_id):
         if user_id not in self.players.keys():
             return None

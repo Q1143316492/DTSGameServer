@@ -6,8 +6,9 @@ from server_impl.server_config import ckv
 
 
 def game_mgr_player_event_service_pretreatment(controller, req, res):
-    req.check_contain_int("user_id")
-    req.check_contain_string("event")
+    req.check_contain_int("room_id")
+    req.check_contain_int("opt")
+    req.check_contain_int("event")
     req.check_contain_string("param")
 
 
@@ -16,15 +17,16 @@ def game_mgr_player_event_service_run(controller, req, res):
         Log().warn("service %d req parse err %s" % (config.GAME_MGR_PLAYER_EVENT_SERVICE, req.parse_err))
         return
 
-    user_id = req.content["user_id"]
+    room_id = req.content["room_id"]
+    opt = req.content["opt"]
     event = req.content["event"]
     param = req.content["param"]
 
-    user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
-    user_runtime.trigger_event(event, param)
+    room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
 
     res.content = {
         "ret": 0,
+        "opt": opt,
         "err_msg": ''
     }
 

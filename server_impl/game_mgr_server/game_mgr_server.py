@@ -6,6 +6,10 @@ from server_impl.game_mgr_server.game_mgr_player_event_service import GameMgrPla
 from server_impl.game_mgr_server.game_mgr_fight_system_service import GameMgrFightSystemService
 from game_mgr_register_robot_service import GameMgrRegisterRobotService
 from game_mgr_query_born_point_service import GameMgrQueryBornPointService
+from server_impl.game_mgr_server.game_mgr_solve_weapons_service import GameMgrSolveWeaponsService
+from server_impl.game_mgr_server.game_mgr_aoe_freeze_service import GameMgrAoeFreezeService
+from server_impl.game_mgr_server.game_mgr_new_weapon_service import GameMgrNewWeaponService
+from server_impl.game_mgr_server.game_mgr_add_hp_service import GameMgrAddHpService
 
 
 class GameMgrServer:
@@ -43,3 +47,15 @@ class GameMgrServer:
 
         game_mgr_query_born_point_service = GameMgrQueryBornPointService()
         self.server.add_handler(game_mgr_query_born_point_service.func_handler)
+
+        game_mgr_solve_weapons_service = GameMgrSolveWeaponsService()
+        self.server.add_handler(game_mgr_solve_weapons_service.func_handler)
+
+        game_mgr_aoe_freeze_service = GameMgrAoeFreezeService()
+        self.server.add_handler(game_mgr_aoe_freeze_service.func_handler)
+
+        game_mgr_new_weapon_service = GameMgrNewWeaponService()
+        self.server.add_handler(game_mgr_new_weapon_service.func_handler)
+
+        game_mgr_add_hp_service = GameMgrAddHpService()
+        self.server.add_handler(game_mgr_add_hp_service.func_handler)

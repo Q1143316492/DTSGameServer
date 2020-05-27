@@ -90,6 +90,7 @@ class ConnectionPool:
     def trigger_connection_out_event(self, conn_id):
         self.__del_conn(conn_id)
 
+    # 消息最后都会在这里回到客户端
     def _send_event(self, conn_id, msg):
         if msg is None:
             return

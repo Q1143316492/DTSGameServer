@@ -80,3 +80,5 @@ def init_user_runtime(controller, user_id):
         user_runtime = user_mgr.UserRuntime(user_id)
         controller.mem_cache.set(user_runtime_key, user_runtime)
     return user_runtime
+
+

@@ -85,7 +85,6 @@ class Sqllite3:
                 cur.execute(sql, data)
                 conn.commit()
                 rows_effect = cur.rowcount
-                print rows_effect
                 self.close_all(conn, cur)
                 return rows_effect
             else:

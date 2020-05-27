@@ -10,6 +10,7 @@ from server_core.connection_pool import ConnectionPool
 
 class Epoll(NetworkServerBase):
 
+    # 有bug，某些情况下连续不能正确断开。。。
     def __init__(self, port, use_et=False):
         NetworkServerBase.__init__(self, port)
 

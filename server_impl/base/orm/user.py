@@ -29,7 +29,6 @@ class User:
             return -1
         self.salt = common.get_md5_str(str(random.random()))[0:4]
         self.md5_str = common.get_md5_str(self.password + self.salt)
-        print self
         data = [
             (self.username, self.password, self.salt, self.md5_str)
         ]

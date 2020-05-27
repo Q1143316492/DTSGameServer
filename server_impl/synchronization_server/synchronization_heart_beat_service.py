@@ -28,7 +28,7 @@ def synchronization_heart_beat_service_run(controller, req, res):
     user_runtime = ckv.get_ckv_user_runtime(user_id)
     now_time = time.time()
 
-    if mode == 1:
+    if mode == 1:   # 客户端 ping 一次 tick 一次
         res_dict = controller.handler_dict[config.ROOM_MGR_QUERY_USER_BELONGED_ROOM_SERVICE].inline_call(controller, {
             "user_id": user_id,
         })
@@ -41,9 +41,11 @@ def synchronization_heart_beat_service_run(controller, req, res):
             return
         user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
         user_runtime.heart_beat.tick(controller, life_time)
-    elif mode == 2:
+        controller.mem_cache.set(ckv.get_ckv_user_to_conn(user_id), req.conn_id)
+    elif mode == 2: # 每次tick后一段时间都来检查下
         user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
-        user_runtime.heart_beat.check(controller, life_time)
+        if not user_runtime.heart_beat.check(controller, life_time):
+            controller.mem_cache.remove(ckv.get_ckv_user_to_conn(user_id))
 
     res.content = {
         "ret": 0,

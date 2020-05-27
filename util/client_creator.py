@@ -201,18 +201,78 @@ def game_mgr_creator():
     # })
     # cc.create()
     # =========================================================
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "query born point"
+    # })
+    # cc.load_request({
+    #     "room_id": "int",
+    #     "user_id": "int"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "born": "int"
+    # })
+    # cc.create()
+    # ========================================================
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "solve weapons"
+    # })
+    # cc.load_request({
+    #     "opt": "int",
+    #     "user_id": "int",
+    #     "wid": "int",
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "opt": "int",
+    #     "wid": "int"
+    # })
+    # cc.create()
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "aoe freeze"
+    # })
+    # cc.load_request({
+    #     "room_id": "int",
+    #     "pos": "string"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    # })
+    # cc.create()
+    # cc.load_conf({
+    #     "class_name": "game mgr",
+    #     "struct_name": "new weapon"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    #     "w_type": "int",
+    #     "w_pos": "int"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "user_id": "int",
+    #     "w_type": "int",
+    #     "w_pos": "int"
+    # })
+    # cc.create()
     cc.load_conf({
         "class_name": "game mgr",
-        "struct_name": "query born point"
+        "struct_name": "add hp"
     })
     cc.load_request({
-        "room_id": "int",
-        "user_id": "int"
+        "user_id": "int",
+        "hp": "int"
     })
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "born": "int"
     })
     cc.create()
 
@@ -235,21 +295,21 @@ def sync_server_creator():
     # })
 
     # ===============================================
-    cc.load_conf({
-        "class_name": "user sync",
-        "struct_name": "report action"
-    })
-    cc.load_request({
-        "user_id": "int",
-        "action": "string",
-        "frame": "int"
-    })
-    cc.load_response({
-        "ret": "int",
-        "err_msg": "string",
-        "frame": "int"
-    })
-    cc.create()
+    # cc.load_conf({
+    #     "class_name": "user sync",
+    #     "struct_name": "report action"
+    # })
+    # cc.load_request({
+    #     "user_id": "int",
+    #     "action": "string",
+    #     "frame": "int"
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "frame": "int"
+    # })
+    # cc.create()
     # ===============================================
     # cc.load_conf({
     #     "class_name": "user sync",
@@ -325,19 +385,35 @@ def user_router_creator():
     # })
     # cc.create()
 
+    # cc.load_conf({
+    #     "class_name": "user",
+    #     "struct_name": "network test"
+    # })
+    # cc.load_request({
+    #     "last_time": "float",
+    #     "msg": "string",
+    # })
+    # cc.load_response({
+    #     "ret": "int",
+    #     "err_msg": "string",
+    #     "last_time": "float",
+    #     "extend": "string",
+    # })
+    # cc.create()
+
     cc.load_conf({
         "class_name": "user",
-        "struct_name": "network test"
+        "struct_name": "user level"
     })
     cc.load_request({
-        "last_time": "float",
-        "msg": "string",
+        "user_id": "int",
+        "opt": "int",
+        "val": "int"
     })
     cc.load_response({
         "ret": "int",
         "err_msg": "string",
-        "last_time": "float",
-        "extend": "string",
+        "val": "int"
     })
     cc.create()
 

@@ -23,3 +23,7 @@ def get_ckv_server_room_id_increase():
 def get_ckv_user_in_matching():
     return "USER#IN#MATCHING"
 
+
+# 【连接ID => user_id】
+def get_ckv_user_to_conn(user_id):
+    return "CONN#TO#USERID#" + str(user_id)

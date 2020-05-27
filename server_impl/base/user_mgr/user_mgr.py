@@ -3,6 +3,7 @@ import time
 from server_core import config
 from server_core.event_controller import DelayEvent
 from server_impl.base.room_mgr import game_room
+from server_impl.server_config import ckv
 
 
 class HeartBeat:
@@ -26,6 +27,8 @@ class HeartBeat:
     def check(self, controller, last_tick_time):
         if abs(self.last_tick_time - last_tick_time) < 1e-3:
             game_room.out_of_last_room(controller, self.user_id)
+            return False
+        return True
 
 
 class GameRole:
@@ -62,9 +65,6 @@ class UserRuntime:
 
     def get_room(self):
         return self.room_type, self.room_id
-
-    def trigger_event(self, event, param):
-        pass
 
     def clear(self):
         self.room_id = self.room_type = None

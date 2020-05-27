@@ -68,7 +68,6 @@ class FunctionHandler:
         is_debug = config.ConfigLoader().get("debug")
         if isinstance(is_debug, bool) and is_debug:
             return self.inline_call_prepare(controller, req_dict)
-
         try:
             return self.inline_call_prepare(controller, req_dict)
         except Exception as e:

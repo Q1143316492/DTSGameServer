@@ -88,6 +88,31 @@
 
 
 
+## 1.4 修改密码[user_level_service] [1004]
+
+**Request**:
+
+| 属性名  | 类型 | 备注 |
+| ------- | ---- | ---- |
+| user_id | int  |      |
+| opt     | int  |      |
+| val     | int  |      |
+
+**Response**
+
+| 属性名  | 类型   | 备注 |
+| ------- | ------ | ---- |
+| ret     | int    |      |
+| err_msg | string |      |
+| val     | int    |      |
+| opt     |        |      |
+
+opt == 1 上报 user_id 的 level 加 val
+
+opt == 2 查询 user_id 的 level
+
+
+
 # 2.0 游戏房间管理 room_mgr_server
 
 每一局游戏，都是多个玩家在同一个场景的行为。把场景定义为房间
@@ -402,9 +427,9 @@ ps:
 | 属性名  | 类型   | 备注   |
 | ------- | ------ | ------ |
 | user_id | int    | 用户id |
-| event   | string |        |
+| opt     | int    |        |
+| event   | int    |        |
 | param   | string |        |
-|         |        |        |
 
 **Response**
 
@@ -473,7 +498,7 @@ opt : query_players
 
 ## 4.5 查询出生点 [query_born_point] [1036]
 
-
+这个还有bug
 
 **Request**:
 
@@ -490,3 +515,94 @@ opt : query_players
 | err_msg | string | 错误信息                    |
 | born    | int    |                             |
 | user_id | int    |                             |
+
+```
+GAME_MGR_SOLVE_WEAPONS_SERVICE
+```
+
+## 4.6 维护武器 [solve_weapons_service] [1037]
+
+
+
+**Request**:
+
+| 属性名  | 类型 | 备注 |
+| ------- | ---- | ---- |
+| user_id | int  |      |
+| wid     | int  |      |
+|         |      |      |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |
+| user_id | int    |                             |
+| wid     | int    |                             |
+|         |        |                             |
+
+
+
+## 4.7 冻结技能 [aoe_freeze_service] [1038]
+
+
+
+**Request**:
+
+| 属性名  | 类型   | 备注                 |
+| ------- | ------ | -------------------- |
+| room_id | int    | 房间                 |
+| pos     | string | vector3 split by ';' |
+|         |        |                      |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |
+| pos     | string | vector3 split by ';'        |
+
+
+
+## 4.8 冻结技能 [new_weapon_service] [1039]
+
+
+
+**Request**:
+
+| 属性名  | 类型 | 备注                           |
+| ------- | ---- | ------------------------------ |
+| user_id | int  | user_id                        |
+| w_type  | int  | 武器类型WeaponType             |
+| w_pos   | int  | 武器在背包中的位置WeaponBagPos |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |
+| user_id | int    |                             |
+| w_type  | int    |                             |
+| w_pos   | int    |                             |
+
+## 4.8 冻结技能 [add_hp_service] [1040]
+
+
+
+**Request**:
+
+| 属性名  | 类型 | 备注    |
+| ------- | ---- | ------- |
+| user_id | int  | user_id |
+| hp      | int  |         |
+|         |      |         |
+
+**Response**
+
+| 属性名  | 类型   | 备注                        |
+| ------- | ------ | --------------------------- |
+| ret     | int    | 标注请求结果，0成功，-1失败 |
+| err_msg | string | 错误信息                    |

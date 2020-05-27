@@ -14,7 +14,8 @@ def out_of_last_room(controller, user_id):
         room_runtime = controller.mem_cache.get(ckv.get_ckv_room_runtime(room_id))
         room_runtime.remove_user(user_id)
 
-        # TODO 房间没人的时候做一些收尾
+        if room_runtime.empty():
+            controller.mem_cache.remove(ckv.get_ckv_room_runtime(room_id))
 
         user_runtime = controller.mem_cache.get(ckv.get_ckv_user_runtime(user_id))
         user_runtime.clear()
