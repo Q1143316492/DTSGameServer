@@ -1,8 +1,9 @@
 # DTSGameServer
 
-一个使用 Python 2.7 自制框架 的游戏服务端代码
+这是一个使用 Unity3D + C# + Python 2.7 写的 PC 吃鸡游戏
 
-完整项目连接：
+客户端代码: https://github.com/Q1143316492/DTSGameClient
 
-链接：https://pan.baidu.com/s/1ayx-O3athX2BdFglFGMi-w 
-提取码：4a7r
+服务端代码: https://github.com/Q1143316492/DTSGameServer
+
+完整项目下载：链接：https://pan.baidu.com/s/1ayx-O3athX2BdFglFGMi-w  提取码：4a7r
